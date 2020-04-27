@@ -1,0 +1,48 @@
+<!-- CABECERA -->
+<header id="header">
+    <div class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="navbar-brand">
+            <a class="navbar-brand">TRIPLE TRIAD</a>
+        </div>
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link active" [routerLink]="['']">Inicio</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link " *ngIf="identity " [routerLink]="[ 'cartas'] ">Cartas</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link " href="#! ">Tienda</a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link " href="#! ">Reglas</a>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav pull-right " *ngIf="!identity ">
+                <li class="nav-item ">
+                    <a [routerLink]="[ 'login'] ">Login</a>
+                </li>
+                <li class="nav-item ">
+                    <a [routerLink]="[ 'register'] ">Registro</a>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav pull-right " *ngIf="identity ">
+                <li>
+                    <a href="# ">{{identity.username}}</a>
+                </li>
+                <li>
+                    <a [routerLink]="[ 'logout', 1] "><span class="glyphicon glyphicon-log-out "></span>
+                        Salir
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+
+<!-- CONTENIDO -->
+<router-outlet></router-outlet>

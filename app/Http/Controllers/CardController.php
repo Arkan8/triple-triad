@@ -4,11 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Helpers\JwtAuth;
+use App\User;
+use App\Card;
 
 class CardController extends Controller
 {
     public function index(Request $request){
-        $hash = $request->header('Authorization', null);
+
+        header('Access-Control-Allow-Origin: *');
+
+        $cards = Card::all();
+
+        return response()->json(array(
+            'cards' => $cards,
+            'status' => 'success'
+        ), 200);
+
+        /* $hash = $request->header('Authorization', null);
 
         $jwtAuth = new JwtAuth();
         $checkToken = $jwtAuth->checkToken($hash);
@@ -20,6 +32,6 @@ class CardController extends Controller
         }else{
             echo "No autenticado";
             die();
-        }
+        } */
     }
 }

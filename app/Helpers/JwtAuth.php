@@ -47,7 +47,7 @@ class JwtAuth {
 
         } else{
             //Mostrar error
-            return array('statis' => 'error', 'message' => 'Inicio de sesion fallido');
+            return array('status' => 'error', 'message' => 'Inicio de sesion fallido');
         }
     }
 

@@ -11,4 +11,8 @@ class Card extends Model
     public function users(){
         return $this->belongsToMany(User::class);
     }
+
+    public function packs(){
+        return $this->hasMany(Pack::class);
+    }
 }

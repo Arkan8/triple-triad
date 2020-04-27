@@ -13,6 +13,9 @@ use App\Helpers\JwtAuth;
 class UserController extends Controller
 {
     public function register(Request $request){
+
+        header('Access-Control-Allow-Origin: *');
+
         //Recoger variables post
         $json = $request->input('json', null);
         $params = json_decode($json);
@@ -30,16 +33,18 @@ class UserController extends Controller
             $user->username = $username;
             $pass_cifrada = hash('sha256', $password);
             $user->password = $pass_cifrada;
+            $user->puntos = 100;
 
             //Comprobar si existe el usuario
-            $isset_user = User::where('email', '=', $email)->first();
+            $isset_email = User::where('email', '=', $email)->first();
+            $isset_username = User::where('username', '=', $username)->first();
 
-            if(!$isset_user){
+            if(!$isset_email && !$isset_username){
                 //Crear el usuario
                 $user->save();
 
-                $cards = Card::find([1,2]);
-                $user->cards()->attach($cards);
+                /* $cards = Card::find([1,2]);
+                $user->cards()->attach($cards); */
 
                 $data = array(
                     'status' => 'success',
@@ -72,6 +77,9 @@ class UserController extends Controller
     }
 
     public function login(Request $request){
+
+        header('Access-Control-Allow-Origin: *');
+
         $jwtAuth = new JwtAuth();
 
         //Recibir datos

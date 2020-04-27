@@ -40,4 +40,8 @@ class User extends Authenticatable
     public function cards(){
         return $this->belongsToMany(Card::class);
     }
+
+    public function statistics(){
+        return $this->belongsTo(Statistic::class);
+    }
 }
