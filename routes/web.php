@@ -21,3 +21,4 @@ Route::post('register', 'UserController@register');
 Route::post('login', 'UserController@login');
 
 Route::resource('/cards', 'CardController');
+Route::post('/cardsUser', 'CardController@cardsUser');
