@@ -10,6 +10,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { DefaultComponent } from './components/default/default.component';
 import { CardShowComponent } from './components/card-show/card-show.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { CardShowComponent } from './components/card-show/card-show.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    routing
+    routing,
+    NgbModule
   ],
   providers: [
     appRoutingProviders

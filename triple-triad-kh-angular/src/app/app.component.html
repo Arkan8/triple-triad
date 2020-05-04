@@ -1,46 +1,102 @@
 <!-- CABECERA -->
 <header id="header">
-    <div class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-survival101">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="../assets/images/tt_logo.png" width="45%" [routerLink]="['']" style="cursor: pointer;">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor02">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" [routerLink]="['']">Inicio<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['cartas']">Cartas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Tienda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Reglas</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav mr-auto" *ngIf="!identity">
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="[ 'login'] ">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="[ 'register']">Registro</a>
+                    </li>
+                </ul>
+
+                <ul class="navbar-nav mr-auto" *ngIf="identity">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{{identity.username}}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="[ 'logout', 1]" onclick="return confirm('¿Seguro que deseas salir?')">
+                            Salir
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+
+    </nav>
+    <!-- partial -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js'></script>
+
+    <!-- <div class="navbar navbar-expand-lg navbar-light bg-dark">
         <div class="navbar-brand">
-            <a class="navbar-brand">TRIPLE TRIAD</a>
+            <a class="navbar-brand"><img src="../assets/images/tt_logo.png" width="50%" [routerLink]="['']" style="cursor: pointer;"></a>
         </div>
         <div class="collapse navbar-collapse" id="menu">
-            <ul class="nav">
+
+            <ul class="nav nav-pills nav-justified">
                 <li class="nav-item">
-                    <a class="nav-link active" [routerLink]="['']">Inicio</a>
+                    <a class="nav-link" [routerLink]="['']">Inicio</a>
                 </li>
-                <li class="nav-item ">
+                <li class="nav-item">
                     <a class="nav-link " *ngIf="identity " [routerLink]="[ 'cartas'] ">Cartas</a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link " href="#! ">Tienda</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!">Longer nav link</a>
                 </li>
-                <li class="nav-item ">
-                    <a class="nav-link " href="#! ">Reglas</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="#!">Link</a>
                 </li>
             </ul>
 
-            <ul class="nav navbar-nav pull-right " *ngIf="!identity ">
-                <li class="nav-item ">
+            <ul class="nav navbar-nav ml-auto" *ngIf="!identity">
+                <li class="nav-item nav-link">
                     <a [routerLink]="[ 'login'] ">Login</a>
                 </li>
-                <li class="nav-item ">
-                    <a [routerLink]="[ 'register'] ">Registro</a>
+                <li class="nav-item nav-link">
+                    <a [routerLink]="[ 'register']">Registro</a>
                 </li>
             </ul>
 
-            <ul class="nav navbar-nav pull-right " *ngIf="identity ">
-                <li>
-                    <a href="# ">{{identity.username}}</a>
+            <ul class="nav navbar-nav ml-auto" *ngIf="identity">
+                <li class="nav-item nav-link">
+                    <a href="#">{{identity.username}}</a>
                 </li>
-                <li>
-                    <a [routerLink]="[ 'logout', 1] "><span class="glyphicon glyphicon-log-out "></span>
+                <li class="nav-item nav-link">
+                    <a [routerLink]="[ 'logout', 1]"><span class="glyphicon glyphicon-log-out"></span>
                         Salir
                     </a>
                 </li>
             </ul>
+
         </div>
-    </div>
+    </div> -->
 </header>
 
 

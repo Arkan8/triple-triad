@@ -1,103 +1,356 @@
-<div class="col-md-12">
-    <!-- CARTAS DE NIVEL 1 -->
-    <div class="card">
-        <div class="card-body">
-            <h4 class="card-title" style="margin-left: 13px;">{{nivel1}}</h4>
-            <span *ngFor="let card of cards.slice(0,11)">
-                <span *ngIf="card.rareza == '1'">
-                    <img src="../../../assets/images/nv1_azul/{{card.img_aliado}}" width="14%" style="margin: 10px;">
-                </span>
-            </span>
+<div class="col-md-12" id="fondo">
+    <div class="container-fluid">
+        <br>
+        <div class="card" id="grupoCartas">
+            <div class="card-body">
+
+                <!--Accordion wrapper-->
+                <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+
+
+                    <!-- --------------------------- TUS CARTAS --------------------------- -->
+
+                    <!-- Accordion card -->
+                    <div class="card">
+
+                        <!-- Card header -->
+                        <div class="card-header" role="tab" id="headingOne1">
+                            <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="false" aria-controls="collapseOne1">
+                                <h5 class="mb-0 raise otra" align=center>
+                                    {{tusCartas}}
+                                </h5>
+                            </a>
+                        </div>
+
+                        <!-- Card body -->
+                        <div id="collapseOne1" class="collapse show" role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordionEx">
+                            <div class="card-body" style="background-color: #17181c;">
+                                <!-- TUS CARTAS -->
+                                <br>
+                                <span *ngFor="let card of cardUserArray">
+                                    <span *ngIf="card.rareza == '1'">
+                                        <img src="../../../assets/images/nv1_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+                                    </span>
+                                <span *ngIf="card.rareza == '2'">
+                                        <img src="../../../assets/images/nv2_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+                                   </span>
+                                <span *ngIf="card.rareza == '3'">
+                                        <img src="../../../assets/images/nv3_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+                                   </span>
+                                <span *ngIf="card.rareza == '4'">
+                                        <img src="../../../assets/images/nv4_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+                                   </span>
+                                <span *ngIf="card.rareza == '5'">
+                                        <img src="../../../assets/images/nv5_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+                                   </span>
+                                <span *ngIf="card.rareza == '6'">
+                                        <img src="../../../assets/images/nv6_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+                                   </span>
+                                <span *ngIf="card.rareza == '7'">
+                                        <img src="../../../assets/images/nv7_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+                                   </span>
+                                <span *ngIf="card.rareza == '8'">
+                                        <img src="../../../assets/images/nv8_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+                                   </span>
+                                <span *ngIf="card.rareza == '9'">
+                                        <img src="../../../assets/images/nv9_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+                                   </span>
+                                <span *ngIf="card.rareza == '10'">
+                                        <img src="../../../assets/images/nv10_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+                                   </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Accordion card -->
+
+                    <!-- --------------------------- TODAS LAS CARTAS --------------------------- -->
+                    <!-- Accordion card -->
+                    <div class="card">
+
+                        <!-- Card header -->
+                        <div class="card-header" role="tab" id="headingOne1">
+                            <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="false" aria-controls="collapseOne1">
+                                <h5 class="mb-0 raise otra" align=center>
+                                    {{nivel1}}
+                                </h5>
+                            </a>
+                        </div>
+
+                        <!-- Card body -->
+                        <div id="collapseOne1" class="collapse" role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordionEx">
+                            <div class="card-body" style="background-color: #17181c;">
+                                <!-- CARTAS DE NIVEL 1 -->
+                                <br>
+                                <span *ngFor="let card of cards.slice(0,11)">
+                                    <span *ngIf="card.rareza == '1'">
+                                        <img src="../../../assets/images/nv1_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Accordion card -->
+
+                    <!-- Accordion card -->
+                    <div class="card">
+
+                        <!-- Card header -->
+                        <div class="card-header" role="tab" id="headingOne2">
+                            <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne2" aria-expanded="false" aria-controls="collapseOne2">
+                                <h5 class="mb-0 raise otra" align=center>
+                                    {{nivel2}}
+                                </h5>
+                            </a>
+                        </div>
+
+                        <!-- Card body -->
+                        <div id="collapseOne2" class="collapse" role="tabpanel" aria-labelledby="headingOne2" data-parent="#accordionEx">
+                            <div class="card-body" style="background-color: #17181c;">
+                                <!-- CARTAS DE NIVEL 2 -->
+                                <br>
+                                <span *ngFor="let card of cards.slice(11,22)">
+                                    <span *ngIf="card.rareza == '2'">
+                                        <img src="../../../assets/images/nv2_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Accordion card -->
+
+                    <!-- Accordion card -->
+                    <div class="card">
+
+                        <!-- Card header -->
+                        <div class="card-header" role="tab" id="headingOne3">
+                            <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne3" aria-expanded="false" aria-controls="collapseOne3">
+                                <h5 class="mb-0 raise otra" align=center>
+                                    {{nivel3}}
+                                </h5>
+                            </a>
+                        </div>
+
+                        <!-- Card body -->
+                        <div id="collapseOne3" class="collapse" role="tabpanel" aria-labelledby="headingOne3" data-parent="#accordionEx">
+                            <div class="card-body" style="background-color: #17181c;">
+                                <!-- CARTAS DE NIVEL 3 -->
+                                <br>
+                                <span *ngFor="let card of cards.slice(22,33)">
+                                    <span *ngIf="card.rareza == '3'">
+                                        <img src="../../../assets/images/nv3_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Accordion card -->
+
+                    <!-- Accordion card -->
+                    <div class="card">
+
+                        <!-- Card header -->
+                        <div class="card-header" role="tab" id="headingOne4">
+                            <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne4" aria-expanded="false" aria-controls="collapseOne4">
+                                <h5 class="mb-0 raise otra" align=center>
+                                    {{nivel4}}
+                                </h5>
+                            </a>
+                        </div>
+
+                        <!-- Card body -->
+                        <div id="collapseOne4" class="collapse" role="tabpanel" aria-labelledby="headingOne4" data-parent="#accordionEx">
+                            <div class="card-body" style="background-color: #17181c;">
+                                <!-- CARTAS DE NIVEL 4 -->
+                                <br>
+                                <span *ngFor="let card of cards.slice(33,44)">
+                                    <span *ngIf="card.rareza == '4'">
+                                        <img src="../../../assets/images/nv4_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Accordion card -->
+
+                    <!-- Accordion card -->
+                    <div class="card">
+
+                        <!-- Card header -->
+                        <div class="card-header" role="tab" id="headingOne5">
+                            <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne5" aria-expanded="false" aria-controls="collapseOne5">
+                                <h5 class="mb-0 raise otra" align=center>
+                                    {{nivel5}}
+                                </h5>
+                            </a>
+                        </div>
+
+                        <!-- Card body -->
+                        <div id="collapseOne5" class="collapse" role="tabpanel" aria-labelledby="headingOne5" data-parent="#accordionEx">
+                            <div class="card-body" style="background-color: #17181c;">
+                                <!-- CARTAS DE NIVEL 5 -->
+                                <br>
+                                <span *ngFor="let card of cards.slice(44,55)">
+                                    <span *ngIf="card.rareza == '5'">
+                                        <img src="../../../assets/images/nv5_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Accordion card -->
+
+                    <!-- Accordion card -->
+                    <div class="card">
+
+                        <!-- Card header -->
+                        <div class="card-header" role="tab" id="headingOne6">
+                            <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne6" aria-expanded="false" aria-controls="collapseOne6">
+                                <h5 class="mb-0 raise otra" align=center>
+                                    {{nivel6}}
+                                </h5>
+                            </a>
+                        </div>
+
+                        <!-- Card body -->
+                        <div id="collapseOne6" class="collapse" role="tabpanel" aria-labelledby="headingOne6" data-parent="#accordionEx">
+                            <div class="card-body" style="background-color: #17181c;">
+                                <!-- CARTAS DE NIVEL 6 -->
+                                <br>
+                                <span *ngFor="let card of cards.slice(55,66)">
+                                    <span *ngIf="card.rareza == '6'">
+                                        <img src="../../../assets/images/nv6_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Accordion card -->
+
+                    <!-- Accordion card -->
+                    <div class="card">
+
+                        <!-- Card header -->
+                        <div class="card-header" role="tab" id="headingOne7">
+                            <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne7" aria-expanded="false" aria-controls="collapseOne7">
+                                <h5 class="mb-0 raise otra" align=center>
+                                    {{nivel7}}
+                                </h5>
+                            </a>
+                        </div>
+
+                        <!-- Card body -->
+                        <div id="collapseOne7" class="collapse" role="tabpanel" aria-labelledby="headingOne7" data-parent="#accordionEx">
+                            <div class="card-body" style="background-color: #17181c;">
+                                <!-- CARTAS DE NIVEL 7 -->
+                                <br>
+                                <span *ngFor="let card of cards.slice(66,77)">
+                                    <span *ngIf="card.rareza == '7'">
+                                        <img src="../../../assets/images/nv7_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Accordion card -->
+
+                    <!-- Accordion card -->
+                    <div class="card">
+
+                        <!-- Card header -->
+                        <div class="card-header" role="tab" id="headingOne8">
+                            <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne8" aria-expanded="false" aria-controls="collapseOne8">
+                                <h5 class="mb-0 raise otra" align=center>
+                                    {{nivel8}}
+                                </h5>
+                            </a>
+                        </div>
+
+                        <!-- Card body -->
+                        <div id="collapseOne8" class="collapse" role="tabpanel" aria-labelledby="headingOne8" data-parent="#accordionEx">
+                            <div class="card-body" style="background-color: #17181c;">
+                                <!-- CARTAS DE NIVEL 8 -->
+                                <br>
+                                <span *ngFor="let card of cards.slice(77,88)">
+                                    <span *ngIf="card.rareza == '8'">
+                                        <img src="../../../assets/images/nv8_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Accordion card -->
+
+                    <!-- Accordion card -->
+                    <div class="card">
+
+                        <!-- Card header -->
+                        <div class="card-header" role="tab" id="headingOne9">
+                            <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne9" aria-expanded="false" aria-controls="collapseOne9">
+                                <h5 class="mb-0 raise otra" align=center>
+                                    {{nivel9}}
+                                </h5>
+                            </a>
+                        </div>
+
+                        <!-- Card body -->
+                        <div id="collapseOne9" class="collapse" role="tabpanel" aria-labelledby="headingOne9" data-parent="#accordionEx">
+                            <div class="card-body" style="background-color: #17181c;">
+                                <!-- CARTAS DE NIVEL 9 -->
+                                <br>
+                                <span *ngFor="let card of cards.slice(88,99)">
+                                    <span *ngIf="card.rareza == '9'">
+                                        <img src="../../../assets/images/nv9_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Accordion card -->
+
+                    <!-- Accordion card -->
+                    <div class="card">
+
+                        <!-- Card header -->
+                        <div class="card-header" role="tab" id="headingOne10">
+                            <a data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne10" aria-expanded="false" aria-controls="collapseOne10">
+                                <h5 class="mb-0 raise otra" align=center>
+                                    {{nivel10}}
+                                </h5>
+                            </a>
+                        </div>
+
+                        <!-- Card body -->
+                        <div id="collapseOne10" class="collapse" role="tabpanel" aria-labelledby="headingOne10" data-parent="#accordionEx">
+                            <div class="card-body" style="background-color: #17181c;">
+                                <!-- CARTAS DE NIVEL 10 -->
+                                <br>
+                                <span *ngFor="let card of cards.slice(99,110)">
+                                    <span *ngIf="card.rareza == '10'">
+                                        <img src="../../../assets/images/nv10_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Accordion card -->
+
+                </div>
+                <!-- Accordion wrapper -->
+
+            </div>
+
+            <!-- <div id="wrap">
+                <div id="left_col">
+                </div>
+
+                <div id="right_col">
+
+
+
+                </div>
+            </div> -->
+
         </div>
     </div>
-
-    <!-- CARTAS DE NIVEL 2 -->
-    <div>
-        {{nivel2}}
-    </div>
-    <span *ngFor="let card of cards.slice(11,22)">
-        <span *ngIf="card.rareza == '2'">
-            <img src="../../../assets/images/nv2_azul/{{card.img_aliado}}" width="15%">
-        </span>
-    </span>
-
-    <!-- CARTAS DE NIVEL 3 -->
-    <div>
-        {{nivel3}}
-    </div>
-    <span *ngFor="let card of cards.slice(22,33)">
-        <span *ngIf="card.rareza == '3'">
-            <img src="../../../assets/images/nv3_azul/{{card.img_aliado}}" width="15%">
-        </span>
-    </span>
-
-    <!-- CARTAS DE NIVEL 4 -->
-    <div>
-        {{nivel4}}
-    </div>
-    <span *ngFor="let card of cards.slice(33,44)">
-        <span *ngIf="card.rareza == '4'">
-            <img src="../../../assets/images/nv4_azul/{{card.img_aliado}}" width="15%">
-        </span>
-    </span>
-
-    <!-- CARTAS DE NIVEL 5 -->
-    <div>
-        {{nivel5}}
-    </div>
-    <span *ngFor="let card of cards.slice(44,55)">
-        <span *ngIf="card.rareza == '5'">
-            <img src="../../../assets/images/nv5_azul/{{card.img_aliado}}" width="15%">
-        </span>
-    </span>
-
-    <!-- CARTAS DE NIVEL 6 -->
-    <div>
-        {{nivel6}}
-    </div>
-    <span *ngFor="let card of cards.slice(55,66)">
-        <span *ngIf="card.rareza == '6'">
-            <img src="../../../assets/images/nv6_azul/{{card.img_aliado}}" width="15%">
-        </span>
-    </span>
-
-    <!-- CARTAS DE NIVEL 7 -->
-    <div>
-        {{nivel7}}
-    </div>
-    <span *ngFor="let card of cards.slice(66,77)">
-        <span *ngIf="card.rareza == '7'">
-            <img src="../../../assets/images/nv7_azul/{{card.img_aliado}}" width="15%">
-        </span>
-    </span>
-
-    <!-- CARTAS DE NIVEL 8 -->
-    <div>
-        {{nivel8}}
-    </div>
-    <span *ngFor="let card of cards.slice(77,88)">
-        <span *ngIf="card.rareza == '8'">
-            <img src="../../../assets/images/nv8_azul/{{card.img_aliado}}" width="15%">
-        </span>
-    </span>
-
-    <!-- CARTAS DE NIVEL 9 -->
-    <div>
-        {{nivel9}}
-    </div>
-    <span *ngFor="let card of cards.slice(88,99)">
-        <span *ngIf="card.rareza == '9'">
-            <img src="../../../assets/images/nv9_azul/{{card.img_aliado}}" width="15%">
-        </span>
-    </span>
-
-    <!-- CARTAS DE NIVEL 10 -->
-    <div>
-        {{nivel10}}
-    </div>
-    <span *ngFor="let card of cards.slice(99,110)">
-        <span *ngIf="card.rareza == '10'">
-            <img src="../../../assets/images/nv10_azul/{{card.img_aliado}}" width="15%">
-        </span>
-    </span>
 </div>
