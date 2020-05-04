@@ -13,6 +13,6 @@ class Card extends Model
     }
 
     public function packs(){
-        return $this->hasMany(Pack::class);
+        return $this->belongsTo(Pack::class);
     }
 }
