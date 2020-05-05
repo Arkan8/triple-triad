@@ -44,4 +44,5 @@ class User extends Authenticatable
     public function statistics(){
         return $this->belongsTo(Statistic::class);
     }
+
 }

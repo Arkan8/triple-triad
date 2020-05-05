@@ -48,7 +48,8 @@ class UserController extends Controller
                 $arrayRandom = [rand(1,11), rand(1,11), rand(1,11), rand(1,11), rand(12,22)];
 
                 $cards = Card::find($arrayRandom);
-                $user->cards()->attach($cards);
+                /* $user->cards()->attach($cards); */
+                $user->cards()->saveMany($cards);
 
                 $data = array(
                     'status' => 'success',
