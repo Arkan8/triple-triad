@@ -1,0 +1,24 @@
+body {
+    background-color: #17181c;
+    margin: 40px;
+}
+
+.nuevaPartida {
+    margin: 20px;
+}
+
+.card {
+    padding: 50px;
+    margin-top: 10px;
+    text-align: center;
+    border: 1px solid red;
+}
+
+h2 {
+    text-align: center;
+    margin: 50px;
+}
+
+.fondo {
+    background-color: #17181c;
+}

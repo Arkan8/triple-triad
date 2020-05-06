@@ -11,6 +11,9 @@ import { RegisterComponent } from './components/register/register.component';
 import { DefaultComponent } from './components/default/default.component';
 import { CardShowComponent } from './components/card-show/card-show.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReglasComponent } from './components/reglas/reglas.component';
+import { InicioComponent } from './components/inicio/inicio.component';
+import { NewGameComponent } from './components/new-game/new-game.component';
 
 
 @NgModule({
@@ -20,6 +23,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RegisterComponent,
     DefaultComponent,
     CardShowComponent,
+    ReglasComponent,
+    InicioComponent,
+    NewGameComponent,
   ],
   imports: [
     BrowserModule,
