@@ -1,1 +1,46 @@
-<p>new-game works!</p>
+<div class="col-md-12">
+    <div class="row fondo">
+        <div class="card col-lg-12 col-md-12 col-xs-12">
+            <div class="card-title" align=center>
+                <h1>NUEVA PARTIDA</h1>
+                <hr>
+            </div>
+            <div class="card-body">
+
+                <h3>Tus cartas seleccionadas aleatoriamente para tu siguiente partida</h3>
+                <hr>
+
+                <span *ngFor="let card of fiveCards">
+                    <span *ngIf="card.rareza == '1'">
+                    <img src="../../../assets/images/nv1_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1"></span>
+                <span *ngIf="card.rareza == '2'">
+                    <img src="../../../assets/images/nv2_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1"></span>
+                <span *ngIf="card.rareza == '3'">
+                    <img src="../../../assets/images/nv3_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1"></span>
+                <span *ngIf="card.rareza == '4'">
+                    <img src="../../../assets/images/nv4_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1"></span>
+                <span *ngIf="card.rareza == '5'">
+                    <img src="../../../assets/images/nv5_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1"></span>
+                <span *ngIf="card.rareza == '6'">
+                    <img src="../../../assets/images/nv6_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1"></span>
+                <span *ngIf="card.rareza == '7'">
+                    <img src="../../../assets/images/nv7_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1"></span>
+                <span *ngIf="card.rareza == '8'">
+                    <img src="../../../assets/images/nv8_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1"></span>
+                <span *ngIf="card.rareza == '9'">
+                    <img src="../../../assets/images/nv9_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1"></span>
+                <span *ngIf="card.rareza == '10'">
+                    <img src="../../../assets/images/nv10_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1"></span>
+                </span>
+
+                <form>
+                    <select class="minimal" id="select">
+                        <option selected value="hide">Elija un adversario</option>
+                            <option *ngFor="let user of usersList">{{user.username}}</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,24 +1,27 @@
-<div class="col-md-12">
-    <h2>{{title}}</h2>
+<div class="col-md-12 fondo">
+    <div class="row fondo">
+        <h2 class="iniciar col-md-12">{{title}}</h2>
 
-    <div class="alert alert-danger" *ngIf="status == 'error'">
-        No se ha podido identificar el usuario
+        <div class="alert alert-danger" *ngIf="status == 'error'">
+            No se ha podido identificar el usuario
+        </div>
+
+        <div class="col-md-4"></div>
+        <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" class="col-md-4 fondo">
+
+            <p>
+                <input type="email" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control" placeholder="Dirección de correo" required />
+                <span *ngIf="!email.valid && email.touched" style="color: red; font-size: small;">El email no es válido</span>
+            </p>
+
+            <p>
+                <input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" placeholder="Contraseña" required />
+                <span *ngIf="!password.valid && password.touched" style="color: red; font-size: small;">La contraseña no es válida</span>
+            </p>
+
+            <input type="submit" value="Iniciar sesión" class="btn btn-primary" id="boton" [disabled]="!loginForm.form.valid" />
+        </form>
+        <div class="col-md-4"></div>
+
     </div>
-
-    <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)" class="col-md-5">
-
-        <p>
-            <label for="email">Email</label>
-            <input type="email" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control" required />
-            <span *ngIf="!email.valid && email.touched">El email no es válido</span>
-        </p>
-
-        <p>
-            <label for="password">Contraseña</label>
-            <input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" required />
-            <span *ngIf="!password.valid && password.touched">La contraseña no es válida</span>
-        </p>
-
-        <input type="submit" value="Iniciar sesión" class="btn btn-primary" [disabled]="!loginForm.form.valid" />
-    </form>
 </div>

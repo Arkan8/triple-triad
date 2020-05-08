@@ -114,4 +114,15 @@ class UserController extends Controller
 
         return response()->json($signup, 200);
     }
+
+    public function getAllUsers(){
+        header('Access-Control-Allow-Origin: *');
+        
+        $users = User::all();
+        
+        return response()->json(array(
+            'users' => $users,
+            'status' => 'success'
+        ), 200);
+    }
 }

@@ -29,5 +29,14 @@ export class CardService{
         
         return this._http.post(this.url + 'cardsUser', params, {headers: headers});
     }
+    
+    getFiveRandomCards(id: any): Observable<any>{
+        let json = JSON.stringify(id);
+        let params = "id="+json;
+    
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+        
+        return this._http.post(this.url + 'fiveRandomCards', params, {headers: headers});
+    }
 
 }
