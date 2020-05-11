@@ -14,6 +14,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReglasComponent } from './components/reglas/reglas.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { NewGameComponent } from './components/new-game/new-game.component';
+import { TiendaComponent } from './components/tienda/tienda.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { NewGameComponent } from './components/new-game/new-game.component';
     ReglasComponent,
     InicioComponent,
     NewGameComponent,
+    TiendaComponent,
   ],
   imports: [
     BrowserModule,

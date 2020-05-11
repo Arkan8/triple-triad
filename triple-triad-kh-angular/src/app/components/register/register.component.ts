@@ -6,6 +6,7 @@ import  { UserService } from '../../services/user.service';
 @Component({
     selector: 'register',
     templateUrl: './register.component.html',
+    styleUrls: ['./register.component.css'],
     providers: [UserService]
 })
 export class RegisterComponent implements OnInit {
@@ -18,7 +19,7 @@ export class RegisterComponent implements OnInit {
         private _router: Router,
         private _userService: UserService
     ){
-        this.title = 'Registro';
+        this.title = 'Registrar';
         this.user = new User(1, '', '', '');
     }
 

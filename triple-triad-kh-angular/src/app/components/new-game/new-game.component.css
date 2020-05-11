@@ -9,7 +9,7 @@ body {
 }
 
 .card {
-    background-color: rgba(105, 188, 236, 0.678);
+    background-color: #5f96c8;
     height: 80vh;
     text-align: center;
     justify-content: center;
@@ -91,4 +91,8 @@ select {
     -moz-transition: all .1s ease-in-out;
     -ms-transition: all .1s ease-in-out;
     -o-transition: all .1s ease-in-out;
+}
+
+#select {
+    margin-top: 30px;
 }
