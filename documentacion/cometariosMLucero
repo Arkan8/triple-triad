@@ -1,6 +1,7 @@
-Explica en la documentación cada entidad de la base de datos:
+No olvides explicar en la documentación cada entidad de la base de datos junto con sus campos.
 
 No entiendo muy bien:
 
-La cardinalidad de la relación Users - Statistics. Me parece que sería de uno a uno, es decir que incluso podría fusionarse en una sóla tabla.
-Los campos carssPlayer1 y cardsPayer2 de Matchs
+La cardinalidad de la relación Users - Statistics. Me parece que sería de uno a uno, es decir que incluso podrían fusionarse en una sóla tabla.
+Los campos cartasPlayer1 y cartasPlayer2 de match son string, que contenido tendrían? Parecen que serían relaciones de n a m con cards
+
