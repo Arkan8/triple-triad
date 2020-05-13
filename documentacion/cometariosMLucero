@@ -1,0 +1,5 @@
+Explica en la documentación cada entidad de la base de datos:
+
+No entiendo muy bien:
+
+La cardinalidad de la relación User - Statistics. Me parece que sería de uno a uno, es decir que incluso podría fusionarse en una sóla tabla.
