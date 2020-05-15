@@ -33,6 +33,8 @@ export class NewGameComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
+
     this.selectedObj = 'Elija un adversario';
     if (this.identity == null) {
       this._router.navigate(['/login']);
@@ -42,33 +44,31 @@ export class NewGameComponent implements OnInit {
         (response) => {
           if (response.status == 'success') {
             this.usersList = response.users;
-
           }
         },
         (error) => {
           console.log(error);
         }
-        );
+      );
         
-        //Obtener cartas random para la partida
-        var id = this.identity.sub;
-        
-        this._cardService.getFiveRandomCards(id).subscribe(
-          (response) => {
-            if (response.status == 'success') {
-              this.fiveCards = response.fiveCards;
-            }
-          },
-          (error) => {
-            console.log(error);
-          }
-          );
-          
-        }
-      }
+      //Obtener cartas random para la partida
+      var id = this.identity.sub;
       
-      onChangeObj(newObj) {
-        this.selectedObj = newObj;
+      this._cardService.getFiveRandomCards(id).subscribe(
+        (response) => {
+          if (response.status == 'success') {
+            this.fiveCards = response.fiveCards;
+          }
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+    }
+  }
+      
+  onChangeObj(newObj) {
+    this.selectedObj = newObj;
   }
 
   retar(){
@@ -80,14 +80,12 @@ export class NewGameComponent implements OnInit {
     this._userService.createDuel(this.duel).subscribe(
       (response) => {
         if (response.status == 'success') {
-          console.log("victory");
+          this._router.navigate(['/']);
         }
       },
       (error) => {
         console.log(error);
       }
-    );
+      );
   }
-
-
 }

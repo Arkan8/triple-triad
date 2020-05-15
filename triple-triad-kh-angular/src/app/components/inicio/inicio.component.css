@@ -13,6 +13,26 @@ body {
     border: 1px solid;
 }
 
+.esperando {
+    background-image: linear-gradient(to top left, #9dcdf5 0%, #4a84b9 100%);
+    height: 20vh;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid;
+}
+
+.retado {
+    background-image: linear-gradient(to top left, #9dcdf5 0%, #4a84b9 100%);
+    height: 20vh;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid;
+}
+
 .card {
     padding: 50px;
     margin-top: 10px;

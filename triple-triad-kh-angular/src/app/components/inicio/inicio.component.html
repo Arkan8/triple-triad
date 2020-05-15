@@ -1,8 +1,18 @@
 <div class="col-md-12">
     <div class="row fondo">
         <div class="col-xs-12 col-sm-12 col-md-12 fondo">
-            <div [routerLink]="['new-game']" *ngIf="identity" class="card nueva btn">
-                <h3>NUEVA PARTIDA</h3>
+            <div *ngIf="identity">
+                <div [routerLink]="['new-game']" class="card nueva btn" *ngIf="identity.sub != retadores && identity.sub != retados">
+                    <h3>NUEVA PARTIDA</h3>
+                </div>
+
+                <div class="card esperando btn" *ngIf="identity.sub == retadores">
+                    <h3>ESPERANDO AL OPONENTE</h3>
+                </div>
+
+                <div class="card retado btn" *ngIf="identity.sub == retados">
+                    <h3>TE HAN RETADO A UN DUELO</h3>
+                </div>
             </div>
         </div>
     </div>

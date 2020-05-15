@@ -1,6 +1,7 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { UserService } from './services/user.service';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,6 +11,9 @@ import { UserService } from './services/user.service';
 export class AppComponent implements OnInit, DoCheck {
   public identity;
   public token;
+  public allDuels: Array<any>;
+  public retadores: Array<any>;
+  public retados: Array<any>;
 
   constructor(
     private _userService: UserService

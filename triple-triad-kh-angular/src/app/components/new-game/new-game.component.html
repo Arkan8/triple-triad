@@ -36,7 +36,7 @@
                 <div>
                     <select class="minimal" id="select" [ngModel]="selectedObj" (ngModelChange)="onChangeObj($event)">
                         <option selected>Elija un adversario</option>
-                        <option [ngValue]="user" *ngFor="let user of usersList">{{user.username}}</option>
+                            <option [ngValue]="user" *ngFor="let user of usersList">{{user.username}}</option>
                     </select>
                     <hr>
 
@@ -45,6 +45,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>

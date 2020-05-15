@@ -88,4 +88,10 @@ export class UserService{
 
         return this._http.post(this.url+'createDuel', duel,  {headers: headers});
     }
+
+    getDuels(): Observable<any>{
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+        
+        return this._http.get(this.url + 'getDuels', {headers: headers});
+    }
 }

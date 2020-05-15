@@ -149,4 +149,15 @@ class UserController extends Controller
 
         return response()->json($data, 200);
     }
+
+    public function getDuels(){
+        header('Access-Control-Allow-Origin: *');
+        
+        $duels = Duel::all();
+        
+        return response()->json(array(
+            'duels' => $duels,
+            'status' => 'success'
+        ), 200);
+    }
 }
