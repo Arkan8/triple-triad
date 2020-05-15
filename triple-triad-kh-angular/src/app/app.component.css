@@ -83,3 +83,14 @@
     border: #ccc 1px solid;
     margin-right: 5px;
 }
+
+.enlace,
+.enlace2 {
+    padding: 20px;
+    user-select: none;
+}
+
+.enlace:hover {
+    background-color: rgb(37, 95, 153);
+    border-radius: 25px;
+}

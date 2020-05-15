@@ -4,7 +4,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark navbar-survival101">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="../assets/images/tt_logo.png" width="45%" [routerLink]="['']" style="cursor: pointer;">
+                <img src="../assets/images/tt_logo.png" width="160px" [routerLink]="['']" style="cursor: pointer;">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -12,39 +12,39 @@
 
             <div class="collapse navbar-collapse" id="navbarColor02">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item active enlace">
                         <a class="nav-link" [routerLink]="['']">Inicio<span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" *ngIf="identity" [routerLink]="['cartas']">Cartas</a>
+                    <li class="nav-item enlace" *ngIf="identity">
+                        <a class="nav-link" [routerLink]="['cartas']">Cartas</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" *ngIf="identity" href="#">Tienda</a>
+                    <li class="nav-item enlace" *ngIf="identity">
+                        <a class="nav-link" href="#">Tienda</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item enlace">
                         <a class="nav-link" [routerLink]="['reglas']">Reglas</a>
                     </li>
                 </ul>
 
-                <ul class="navbar-nav mr-auto" *ngIf="!identity">
-                    <li class="nav-item">
+                <ul class="navbar-nav" *ngIf="!identity">
+                    <li class="nav-item enlace">
                         <a class="nav-link" [routerLink]="[ 'login'] ">Login</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item enlace">
                         <a class="nav-link" [routerLink]="[ 'register']">Registro</a>
                     </li>
                 </ul>
 
-                <ul class="navbar-nav mr-auto" *ngIf="identity">
+                <ul class="navbar-nav" *ngIf="identity">
 
-                    <li class="nav-item">
+                    <li class="nav-item enlace2">
                         <a class="nav-link"><img src="../assets/images/sun.png" width="18px"> {{identity.puntos}}</a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item enlace2">
                         <a class="nav-link" href="#">{{identity.username}}</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item enlace">
                         <a class="nav-link" [routerLink]="[ 'logout', 1]" onclick="return confirm('¿Seguro que deseas salir?')">
                             Salir
                         </a>

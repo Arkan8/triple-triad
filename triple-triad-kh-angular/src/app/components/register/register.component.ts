@@ -24,7 +24,6 @@ export class RegisterComponent implements OnInit {
     }
 
     ngOnInit(){
-        console.log('register.component cargado correctamente');
     }
 
     onSubmit(form){

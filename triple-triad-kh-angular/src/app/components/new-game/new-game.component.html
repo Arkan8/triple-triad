@@ -33,12 +33,16 @@
                     <img src="../../../assets/images/nv10_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1"></span>
                 </span>
 
-                <form>
-                    <select class="minimal" id="select">
-                        <option selected value="hide">Elija un adversario</option>
-                            <option *ngFor="let user of usersList">{{user.username}}</option>
+                <div>
+                    <select class="minimal" id="select" [ngModel]="selectedObj" (ngModelChange)="onChangeObj($event)">
+                        <option selected>Elija un adversario</option>
+                        <option [ngValue]="user" *ngFor="let user of usersList">{{user.username}}</option>
                     </select>
-                </form>
+                    <hr>
+
+                    <input type="button" value="Enviar reto" class="btn btn-warning" *ngIf="selectedObj == 'Elija un adversario'" disabled>
+                    <input (click)="retar()" type="button" value="Enviar reto" class="btn btn-warning" *ngIf="selectedObj != 'Elija un adversario'">
+                </div>
             </div>
         </div>
 

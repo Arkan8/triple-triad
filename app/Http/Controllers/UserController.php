@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 use App\User;
 use App\Card;
+use App\Duel;
 use App\Helpers\JwtAuth;
 
 class UserController extends Controller
@@ -124,5 +125,28 @@ class UserController extends Controller
             'users' => $users,
             'status' => 'success'
         ), 200);
+    }
+
+    public function createDuel(Request $request){
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods');
+
+        $inputJSON = file_get_contents('php://input');
+        $params = json_decode( $inputJSON, false );
+                
+        $duel = new Duel();
+        
+        $duel->retador = $params->retador;
+        $duel->retado = $params->retado;
+        
+        $duel->save();
+
+        $data = array(
+            'status' => 'success',
+            'code' => 200,
+            'message' => 'Duelo creado correctamente'
+        );
+
+        return response()->json($data, 200);
     }
 }
