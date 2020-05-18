@@ -138,6 +138,8 @@ class UserController extends Controller
         
         $duel->retador = $params->retador;
         $duel->retado = $params->retado;
+        $duel->retadorName = $params->retadorName;
+        $duel->retadoName = $params->retadoName;
         
         $duel->save();
 

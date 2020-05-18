@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { GLOBAL } from './global';
 import { User } from '../models/user';
 import { Duel } from '../models/duel';
@@ -72,13 +72,17 @@ export class UserService{
         
         let json1 = JSON.stringify(duel.retador);
         let json2 = JSON.stringify(duel.retado);
+        let json3 = JSON.stringify(duel.retadorName);
+        let json4 = JSON.stringify(duel.retadoName);
         let retador = json1;
         let retado = json2;
+        let retadorName = json3;
+        let retadoName = json4;
 
         
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
-        let params = { retador, retado };
+        let params = { retador, retado, retadorName, retadoName };
         //let params = "json="+retador;
 
         /* let params = new HttpParams();

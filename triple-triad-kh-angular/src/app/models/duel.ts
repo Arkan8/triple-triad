@@ -3,5 +3,7 @@ export class Duel{
         public id: number,
         public retador: number,
         public retado: number,
+        public retadorName: string,
+        public retadoName: string,
     ){}
 }

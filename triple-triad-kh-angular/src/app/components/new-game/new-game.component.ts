@@ -19,6 +19,11 @@ export class NewGameComponent implements OnInit {
   public fiveCards: Array<any>;
   public selectedObj;
   public duel: Duel;
+  public allDuels: Array<any>;
+  public retadores: Array<any>;
+  public retados: Array<any>;
+  public retadoresName: Array<any>;
+  public retadosName: Array<any>;
 
   constructor(
     private _route: ActivatedRoute,
@@ -29,11 +34,32 @@ export class NewGameComponent implements OnInit {
   ) {
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
-    this.duel = new Duel (1, 1, 1);
+    this.duel = new Duel (1, 1, 1, '', '');
    }
 
   ngOnInit(): void {
+    
+    this._userService.getDuels().subscribe(
+      (response) => {
+        if (response.status == 'success') {
+          this.allDuels = response.duels;
 
+          //Extraemos los retadores y los retados para usarlos en nuestra vista
+          for (let i = 0; i < this.allDuels.length; i++) {
+            this.retadores = this.allDuels[i].retador;
+            this.retados = this.allDuels[i].retado;
+            this.retadoresName = this.allDuels[i].retadorName;
+            this.retadosName = this.allDuels[i].retadoName;
+
+            console.log(this.retadoresName);
+            console.log(this.retadosName);
+          }
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+      );
 
     this.selectedObj = 'Elija un adversario';
     if (this.identity == null) {
@@ -74,9 +100,14 @@ export class NewGameComponent implements OnInit {
   retar(){
     var retador = this.identity.sub;
     var retado = this.selectedObj.id;
+    var retadorName = this.identity.username;
+    var retadoName = this.selectedObj.username;
 
     this.duel.retador = retador;
     this.duel.retado = retado;
+    this.duel.retadorName = retadorName;
+    this.duel.retadoName = retadoName;
+
     this._userService.createDuel(this.duel).subscribe(
       (response) => {
         if (response.status == 'success') {

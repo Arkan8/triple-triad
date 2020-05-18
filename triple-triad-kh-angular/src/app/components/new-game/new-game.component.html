@@ -7,10 +7,37 @@
             </div>
             <div class="card-body">
 
-                <h3>Tus cartas seleccionadas aleatoriamente para tu siguiente partida</h3>
+                <h3>Se seleccionarán 5 cartas aleatorias de tu colección para la siguiente partida</h3>
                 <hr>
 
-                <span *ngFor="let card of fiveCards">
+                <img src="../../../assets/images/back.png" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+                <img src="../../../assets/images/back.png" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+                <img src="../../../assets/images/back.png" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+                <img src="../../../assets/images/back.png" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+                <img src="../../../assets/images/back.png" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+
+                <div *ngIf="identity.sub != retadores && identity.sub != retados">
+                    <select class="minimal" id="select" [ngModel]="selectedObj" (ngModelChange)="onChangeObj($event)">
+                        <option selected>Elija un adversario</option>
+                            <option [ngValue]="user" *ngFor="let user of usersList">{{user.username}}</option>
+                    </select>
+                    <hr>
+
+                    <input type="button" value="Enviar reto" class="btn btn-warning" *ngIf="selectedObj == 'Elija un adversario'" disabled>
+                    <input (click)="retar()" type="button" value="Enviar reto" class="btn btn-warning" *ngIf="selectedObj != 'Elija un adversario'">
+                </div>
+                <hr>
+                <div *ngIf="identity.sub == retados">
+                    <h3 *ngIf="retadosName == identity.username">¿Desea aceptar el duelo de {{retadoresName}}?</h3>
+
+                    <input (click)="retar()" type="button" value="Enviar reto" class="btn btn-warning" *ngIf="selectedObj != 'Elija un adversario'">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--  <span *ngFor="let card of fiveCards">
                     <span *ngIf="card.rareza == '1'">
                     <img src="../../../assets/images/nv1_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1"></span>
                 <span *ngIf="card.rareza == '2'">
@@ -31,19 +58,4 @@
                     <img src="../../../assets/images/nv9_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1"></span>
                 <span *ngIf="card.rareza == '10'">
                     <img src="../../../assets/images/nv10_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1"></span>
-                </span>
-
-                <div>
-                    <select class="minimal" id="select" [ngModel]="selectedObj" (ngModelChange)="onChangeObj($event)">
-                        <option selected>Elija un adversario</option>
-                            <option [ngValue]="user" *ngFor="let user of usersList">{{user.username}}</option>
-                    </select>
-                    <hr>
-
-                    <input type="button" value="Enviar reto" class="btn btn-warning" *ngIf="selectedObj == 'Elija un adversario'" disabled>
-                    <input (click)="retar()" type="button" value="Enviar reto" class="btn btn-warning" *ngIf="selectedObj != 'Elija un adversario'">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                </span> -->
