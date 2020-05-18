@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { User } from '../../models/user';
 import  { UserService } from '../../services/user.service';
@@ -10,7 +10,7 @@ import {CardService} from '../../services/card.service';
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.css'],
-  providers: [UserService, CardService]
+  providers: [UserService, CardService], 
 })
 export class InicioComponent implements OnInit {
   public title: string;
@@ -35,9 +35,7 @@ export class InicioComponent implements OnInit {
    }
 
   ngOnInit(): void {
-
-    
-    
+  
     //Obtener duelos
     this._userService.getDuels().subscribe(
       (response) => {

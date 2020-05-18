@@ -20,10 +20,14 @@ export class NewGameComponent implements OnInit {
   public selectedObj;
   public duel: Duel;
   public allDuels: Array<any>;
-  public retadores: Array<any>;
-  public retados: Array<any>;
-  public retadoresName: Array<any>;
-  public retadosName: Array<any>;
+  public retadores: Array<any> = [];
+  public retados: Array<any> = [];
+  public retadoresName: Array<any> = [];
+  public retadosName: Array<any> = [];
+  public elRetador;
+  public isHidden = false;
+  public isWaiting = false;
+  public isChallenged = false;
 
   constructor(
     private _route: ActivatedRoute,
@@ -46,14 +50,35 @@ export class NewGameComponent implements OnInit {
 
           //Extraemos los retadores y los retados para usarlos en nuestra vista
           for (let i = 0; i < this.allDuels.length; i++) {
-            this.retadores = this.allDuels[i].retador;
-            this.retados = this.allDuels[i].retado;
-            this.retadoresName = this.allDuels[i].retadorName;
-            this.retadosName = this.allDuels[i].retadoName;
-
-            console.log(this.retadoresName);
-            console.log(this.retadosName);
+            this.retadores.push(this.allDuels[i].retador)
+            this.retados.push(this.allDuels[i].retado)
+            this.retadoresName.push(this.allDuels[i].retadorName);
+            this.retadosName.push(this.allDuels[i].retadoName);
           }
+
+          for (let i = 0; i < this.retadores.length; i++) {
+            for (let j = 0; j < this.retados.length; j++) {
+              if (this.identity.sub == this.retadores[i] || this.identity.sub == this.retados[j]) {
+                this.isHidden = true;
+
+                if(this.identity.sub == this.retadores[i]){
+                  this.isWaiting = false;
+                  this.isChallenged = true;
+                  this.isHidden = true;
+                } 
+                else if (this.identity.sub = this.retados[j]) {
+                  this.isWaiting = true;
+                  this.isChallenged = false;
+                  this.isHidden = true;
+                }
+              }
+              
+              if (this.identity.sub == this.retados[j]) {
+                this.elRetador = this.retadoresName[j];
+              }
+            }
+          }
+          
         }
       },
       (error) => {
@@ -91,6 +116,8 @@ export class NewGameComponent implements OnInit {
         }
       );
     }
+
+    //End OnInit
   }
       
   onChangeObj(newObj) {

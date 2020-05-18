@@ -16,7 +16,7 @@
                 <img src="../../../assets/images/back.png" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
                 <img src="../../../assets/images/back.png" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
 
-                <div *ngIf="identity.sub != retadores && identity.sub != retados">
+                <div [hidden]="isHidden">
                     <select class="minimal" id="select" [ngModel]="selectedObj" (ngModelChange)="onChangeObj($event)">
                         <option selected>Elija un adversario</option>
                             <option [ngValue]="user" *ngFor="let user of usersList">{{user.username}}</option>
@@ -27,8 +27,8 @@
                     <input (click)="retar()" type="button" value="Enviar reto" class="btn btn-warning" *ngIf="selectedObj != 'Elija un adversario'">
                 </div>
                 <hr>
-                <div *ngIf="identity.sub == retados">
-                    <h3 *ngIf="retadosName == identity.username">¿Desea aceptar el duelo de {{retadoresName}}?</h3>
+                <div [hidden]="isChallenged">
+                    <h3>¿Desea aceptar el duelo de {{elRetador}}?</h3>
 
                     <input (click)="retar()" type="button" value="Enviar reto" class="btn btn-warning" *ngIf="selectedObj != 'Elija un adversario'">
                 </div>

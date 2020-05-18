@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { CardService } from '../../services/card.service';
@@ -10,6 +10,7 @@ import { Card_User } from '../../models/card_user';
   templateUrl: './card-show.component.html',
   styleUrls: ['./card-show.component.css'],
   providers: [UserService, CardService],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CardShowComponent implements OnInit {
   public page_title: string;
