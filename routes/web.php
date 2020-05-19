@@ -26,3 +26,5 @@ Route::get('/usersList', 'UserController@getAllUsers');
 Route::get('/getDuels', 'UserController@getDuels');
 Route::post('/fiveRandomCards', 'CardController@fiveRandomCards');
 Route::post('/createDuel', 'UserController@createDuel');
+Route::post('/createGame', 'UserController@createGame');
+Route::post('/deleteDuel', 'UserController@deleteDuel');

@@ -83,12 +83,6 @@ export class UserService{
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
         let params = { retador, retado, retadorName, retadoName };
-        //let params = "json="+retador;
-
-        /* let params = new HttpParams();
-
-        params = params.append('retador', retador);
-        params = params.append('retado', retado); */
 
         return this._http.post(this.url+'createDuel', duel,  {headers: headers});
     }
@@ -97,5 +91,32 @@ export class UserService{
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
         
         return this._http.get(this.url + 'getDuels', {headers: headers});
+    }
+
+    deleteDuel(retado): Observable<any>{        
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+        let json = JSON.stringify(retado);
+        let params = "json="+ json;
+
+        return this._http.post(this.url+'deleteDuel', params,  {headers: headers});
+    }
+
+    createGame(match): Observable<any>{
+        
+        /* let player1 = JSON.stringify(match.player1);
+        let player2 = JSON.stringify(match.player2);
+        let player1Name = JSON.stringify(match.player1Name);
+        let player2Name = JSON.stringify(match.player2Name);
+        let puntuacionPlayer1 = JSON.stringify(match.puntuacionPlayer1);
+        let puntuacionPlayer2 = JSON.stringify(match.puntuacionPlayer2);
+        let cartasPlayer1 = JSON.stringify(match.cartasPlayer1);
+        let cartasPlayer2 = JSON.stringify(match.cartasPlayer2); */
+
+        
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+
+/*         let params = { player1, player2, player1Name, player2Name, puntuacionPlayer1, puntuacionPlayer2, cartasPlayer1, cartasPlayer2 }; */
+        return this._http.post(this.url+'createGame', match,  {headers: headers});
     }
 }

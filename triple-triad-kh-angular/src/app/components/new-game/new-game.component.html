@@ -29,8 +29,9 @@
                 <hr>
                 <div [hidden]="isChallenged">
                     <h3>¿Desea aceptar el duelo de {{elRetador}}?</h3>
-
-                    <input (click)="retar()" type="button" value="Enviar reto" class="btn btn-warning" *ngIf="selectedObj != 'Elija un adversario'">
+                    <hr>
+                    <input (click)="aceptar()" type="button" value="Aceptar reto" class="buton">
+                    <input (click)="rechazar()" type="button" value="Rechazar reto" class="buton2">
                 </div>
             </div>
         </div>

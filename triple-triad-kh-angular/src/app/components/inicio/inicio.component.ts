@@ -20,8 +20,8 @@ export class InicioComponent implements OnInit {
   public retadores: Array<any> = [];
   public retados: Array<any> = [];
   public isHidden = false;
-  public isWaiting = false;
-  public isChallenged = false;
+  public isWaiting = true;
+  public isChallenged = true;
 
   constructor(
     private _route: ActivatedRoute,

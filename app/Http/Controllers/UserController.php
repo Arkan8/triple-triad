@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Card;
 use App\Duel;
+use App\Match;
 use App\Helpers\JwtAuth;
 
 class UserController extends Controller
@@ -162,4 +163,67 @@ class UserController extends Controller
             'status' => 'success'
         ), 200);
     }
+
+    public function deleteDuel(Request $request){
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods');
+
+        $json = $request->input('json', null);
+        $params = json_decode($json);
+
+        //$inputJSON = file_get_contents('php://input');
+        //$params = json_decode( $inputJSON, false );
+        //$array = json_decode(json_encode($params), true);
+        
+        //$retadoName = $array['retadoName'];
+        $retadoName = $params;
+        
+        /* $duel = new Duel();
+        
+        $duel->retador = $params->retador;
+        $duel->retado = $params->retado;
+        $duel->retadorName = $params->retadorName;
+        $duel->retadoName = $params->retadoName; */
+        
+        $duel = Duel::where('retadoName', $retadoName);    
+        $duel->delete();
+
+        $data = array(
+            'status' => 'success',
+            'code' => 200,
+            'message' => 'Duelo rechazado correctamente'
+        );
+        
+        return response()->json($data, 200);
+    }
+
+    public function createGame(Request $request){
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods');
+
+        $inputJSON = file_get_contents('php://input');
+        $params = json_decode( $inputJSON, false );
+                
+        $match = new Match();
+        
+        $match->player1 = $params->player1;
+        $match->player2 = $params->player2;
+        $match->player1Name = $params->player1Name;
+        $match->player2Name = $params->player2Name;
+        $match->puntuacionPlayer1 = $params->puntuacionPlayer1;
+        $match->puntuacionPlayer2 = $params->puntuacionPlayer2;
+        $match->cartasPlayer1 = $params->cartasPlayer1;
+        $match->cartasPlayer2 = $params->cartasPlayer2;
+        
+        $match->save();
+
+        $data = array(
+            'status' => 'success',
+            'code' => 200,
+            'message' => 'Duelo creado correctamente'
+        );
+
+        return response()->json($data, 200);
+    }
+
 }
