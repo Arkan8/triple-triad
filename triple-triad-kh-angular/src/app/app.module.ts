@@ -15,6 +15,7 @@ import { ReglasComponent } from './components/reglas/reglas.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { NewGameComponent } from './components/new-game/new-game.component';
 import { TiendaComponent } from './components/tienda/tienda.component';
+import { MatchComponent } from './components/match/match.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { TiendaComponent } from './components/tienda/tienda.component';
     InicioComponent,
     NewGameComponent,
     TiendaComponent,
+    MatchComponent,
   ],
   imports: [
     BrowserModule,

@@ -207,7 +207,7 @@ export class NewGameComponent implements OnInit {
       this._userService.createGame(this.match).subscribe(
         (response) => {
           if(response.status == 'success'){
-            this._router.navigateByUrl('/game/:id');
+            this._router.navigate(['/match']);
           }
         },
         (error) => {
