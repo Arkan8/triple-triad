@@ -151,3 +151,11 @@
         border: black;
         border-style: double;
     }
+    
+    .tabla {
+        margin: 0 auto;
+    }
+    
+    .cartas {
+        margin: 0 auto;
+    }
