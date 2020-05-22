@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import  { UserService } from '../../services/user.service';
 import  { CardService } from '../../services/card.service';
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { Match } from 'src/app/models/match';
+
 
 
 @Component({
@@ -14,6 +17,7 @@ export class MatchComponent implements OnInit {
 
   public identity;    
   public token;
+  public match: Match;
 
   constructor(
     private _route: ActivatedRoute,
@@ -23,9 +27,49 @@ export class MatchComponent implements OnInit {
   ) { 
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
+    this.match = new Match (1, 1, 1, '', '', 1, 1, '', '');
   }
 
   ngOnInit(): void {
+    var id = this.identity.sub;
+
+    this._userService.getMatch(id).subscribe(
+      (response) => {
+        if(response.status == 'success'){
+          this.match = response.match;
+          console.log(this.match);
+        }
+      },
+      (error) => {
+        console.log(error)
+      }
+    );
   }
+
+  /* todo = [
+    'Get to work',
+    'Pick up groceries',
+    'Go home',
+    'Fall asleep'
+  ];
+
+  done = [
+    'Get up',
+    'Brush teeth',
+    'Take a shower',
+    'Check e-mail',
+    'Walk dog'
+  ];
+
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+                        event.container.data,
+                        event.previousIndex,
+                        event.currentIndex);
+    }
+  } */
 
 }

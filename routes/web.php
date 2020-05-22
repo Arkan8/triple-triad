@@ -24,6 +24,7 @@ Route::resource('/cards', 'CardController');
 Route::post('/cardsUser', 'CardController@cardsUser');
 Route::get('/usersList', 'UserController@getAllUsers');
 Route::get('/getDuels', 'UserController@getDuels');
+Route::get('/getMatch', 'UserController@getMatch');
 Route::post('/fiveRandomCards', 'CardController@fiveRandomCards');
 Route::post('/createDuel', 'UserController@createDuel');
 Route::post('/createGame', 'UserController@createGame');

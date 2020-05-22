@@ -2,30 +2,30 @@
     <div class="row fondo">
         <h2 class="iniciar col-md-12">{{title}}</h2>
 
-        <div class="alert alert-success" *ngIf="status == 'success'">
-            EL registro se ha completado correctamente, puedes <a [routerLink]="['/login']">iniciar sesión</a>.
-        </div>
-
-        <div class="alert alert-danger" *ngIf="status == 'error'">
-            El usuario ya existe o hay algún error.
-        </div>
 
         <div class="col-md-4"></div>
         <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" class="col-md-4 fondo" id="formulario">
+            <div style="color:white" *ngIf="status == 'success'">
+                EL registro se ha completado correctamente, puedes <a [routerLink]="['/login']">iniciar sesión</a>.
+            </div>
+
+            <div style="color:red" *ngIf="status == 'error'">
+                El usuario ya existe o hay algún error.
+            </div><br>
 
             <p>
                 <input type="text" name="username" #username="ngModel" [(ngModel)]="user.username" class="form-control" placeholder="Nombre de usuario" required />
-                <span *ngIf="!username.valid && username.touched" style="color: red; font-size: small;">El nombre de usuario es obligatorio</span>
+                <!-- <span *ngIf="!username.valid && username.touched" style="color: red; font-size: small;">El nombre de usuario es obligatorio</span> -->
             </p>
 
             <p>
                 <input type="email" name="email" #email="ngModel" [(ngModel)]="user.email" class="form-control" placeholder="Dirección de correo" required />
-                <span *ngIf="!email.valid && email.touched" style="color: red; font-size: small;">El email es obligatorio</span>
+                <!-- <span *ngIf="!email.valid && email.touched" style="color: red; font-size: small;">El email es obligatorio</span> -->
             </p>
 
             <p>
                 <input type="password" name="password" #password="ngModel" [(ngModel)]="user.password" class="form-control" placeholder="Contraseña" required />
-                <span *ngIf="!password.valid && password.touched" style="color: red; font-size: small;">La contraseña es obligatoria</span>
+                <!-- <span *ngIf="!password.valid && password.touched" style="color: red; font-size: small;">La contraseña es obligatoria</span> -->
             </p>
 
             <p>

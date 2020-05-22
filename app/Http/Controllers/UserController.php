@@ -47,7 +47,7 @@ class UserController extends Controller
 
                 //Asignamos las cartas iniciales para los usuarios recién creados
                 //Necesitamos crear para ello unos números aleatorios para asignar 4 cartas de nivel 1 y una de nivel 2
-                $arrayRandom = [rand(1,11), rand(1,11), rand(1,11), rand(1,11), rand(12,22)];
+                $arrayRandom = [rand(1,11), rand(1,11), rand(1,11), rand(1,11), rand(12,22), rand(1,11), rand(1,11)];
 
                 $cards = Card::find($arrayRandom);
                 /* $user->cards()->attach($cards); */
@@ -226,4 +226,20 @@ class UserController extends Controller
         return response()->json($data, 200);
     }
 
+    public function getMatch(Request $request){
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods');
+        
+        //$cards = Card::with('users')->whereId($id);
+        $id = (int)$request['id'];
+
+        $user = User::find($id);
+        
+        $match = Match::where('player1', $id)->orWhere('player2', $id);
+
+        return response()->json(array(
+            'match' => $match,
+            'status' => 'success'
+        ), 200);
+    }
 }
