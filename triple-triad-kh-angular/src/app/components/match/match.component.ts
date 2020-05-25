@@ -18,6 +18,8 @@ export class MatchComponent implements OnInit {
   public identity;    
   public token;
   public match: Match;
+  public match_id: number;
+  private sub: any;
 
   constructor(
     private _route: ActivatedRoute,
@@ -31,9 +33,13 @@ export class MatchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    var id = this.identity.sub;
+    var user_id = this.identity.sub;
 
-    this._userService.getMatch(id).subscribe(
+    this.sub = this._route.params.subscribe(params => {
+      this.match_id = +params['id'];
+    });
+
+    this._userService.getMatch(this.match_id).subscribe(
       (response) => {
         if(response.status == 'success'){
           this.match = response.match;

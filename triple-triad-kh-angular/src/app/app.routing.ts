@@ -19,7 +19,7 @@ const appRoutes: Routes = [
     {path: 'logout/:sure', component: LoginComponent},
     {path: 'cartas', component: CardShowComponent},
     {path: 'reglas', component: ReglasComponent},
-    {path: 'match', component: MatchComponent},
+    {path: 'match/:id', component: MatchComponent},
     {path: 'new-game', component: NewGameComponent},
     {path: '**', component: InicioComponent}
 ];

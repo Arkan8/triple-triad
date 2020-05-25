@@ -177,6 +177,7 @@ export class NewGameComponent implements OnInit {
         }
       );
 
+
       //Cinco cartas random del jugador 2
       
       this._cardService.getFiveRandomCards(id).subscribe(
@@ -187,7 +188,6 @@ export class NewGameComponent implements OnInit {
             for (let i = 0; i < this.fiveCards2.length; i++) {
               cartas2.push(this.fiveCards2[i].img_rival);
               this.match.cartasPlayer2 = cartas2.toString();
-
             }
           }
         },
@@ -207,7 +207,7 @@ export class NewGameComponent implements OnInit {
       this._userService.createGame(this.match).subscribe(
         (response) => {
           if(response.status == 'success'){
-            this._router.navigate(['/match']);
+            this._router.navigate(['/match', response.id]);
           }
         },
         (error) => {

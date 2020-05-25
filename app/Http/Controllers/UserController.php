@@ -219,6 +219,7 @@ class UserController extends Controller
 
         $data = array(
             'status' => 'success',
+            'id' => $match->id,
             'code' => 200,
             'message' => 'Duelo creado correctamente'
         );
@@ -226,16 +227,17 @@ class UserController extends Controller
         return response()->json($data, 200);
     }
 
-    public function getMatch(Request $request){
+    public function getMatch($id){
         header('Access-Control-Allow-Origin: *');
         header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods');
-        
         //$cards = Card::with('users')->whereId($id);
-        $id = (int)$request['id'];
+        //$id = (int)$request['id'];
 
-        $user = User::find($id);
+        //$user = User::find($id);
+
+        $match = Match::find($id);
         
-        $match = Match::where('player1', $id)->orWhere('player2', $id);
+        //$match = Match::where('player1', $id)->orWhere('player2', $id);
 
         return response()->json(array(
             'match' => $match,
