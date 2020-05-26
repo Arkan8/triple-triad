@@ -202,6 +202,7 @@ class UserController extends Controller
         header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods');
 
         $inputJSON = file_get_contents('php://input');
+        
         $params = json_decode( $inputJSON, false );
                 
         $match = new Match();
@@ -214,6 +215,7 @@ class UserController extends Controller
         $match->puntuacionPlayer2 = $params->puntuacionPlayer2;
         $match->cartasPlayer1 = $params->cartasPlayer1;
         $match->cartasPlayer2 = $params->cartasPlayer2;
+
         
         $match->save();
 
@@ -241,6 +243,17 @@ class UserController extends Controller
 
         return response()->json(array(
             'match' => $match,
+            'status' => 'success'
+        ), 200);
+    }
+
+    public function getPartidas(){
+        header('Access-Control-Allow-Origin: *');
+        
+        $matches = Match::all();
+        
+        return response()->json(array(
+            'matches' => $matches,
             'status' => 'success'
         ), 200);
     }

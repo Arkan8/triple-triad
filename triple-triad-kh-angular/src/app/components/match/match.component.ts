@@ -43,7 +43,6 @@ export class MatchComponent implements OnInit {
       (response) => {
         if(response.status == 'success'){
           this.match = response.match;
-          console.log(this.match);
         }
       },
       (error) => {

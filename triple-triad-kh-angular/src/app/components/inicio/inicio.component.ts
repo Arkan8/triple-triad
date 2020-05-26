@@ -35,6 +35,9 @@ export class InicioComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
+    //Ver si hay partidas para el usuario
+
   
     //Obtener duelos
     this._userService.getDuels().subscribe(
@@ -64,11 +67,8 @@ export class InicioComponent implements OnInit {
                   this.isHidden = true;
                 }
               }
-              
             }
-            
           }
-
         }
       },
       (error) => {
