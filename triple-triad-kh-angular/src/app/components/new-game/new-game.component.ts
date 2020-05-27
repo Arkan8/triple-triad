@@ -111,20 +111,7 @@ export class NewGameComponent implements OnInit {
           console.log(error);
         }
       );
-        
-      //Obtener cartas random para la partida
-      var id = this.identity.sub;
       
-      /* this._cardService.getFiveRandomCards(id).subscribe(
-        (response) => {
-          if (response.status == 'success') {
-            this.fiveCards = response.fiveCards;
-          }
-        },
-        (error) => {
-          console.log(error);
-        }
-      ); */
     } 
 
     //End OnInit

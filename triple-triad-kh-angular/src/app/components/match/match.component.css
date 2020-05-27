@@ -154,8 +154,27 @@
     
     .tabla {
         margin: 0 auto;
+        margin-top: 90px;
     }
     
     .cartas {
         margin: 0 auto;
+    }
+    
+    .puntuacion {
+        font-size: 85px;
+        color: white;
+        text-align: center;
+    }
+    
+    input[type="radio"]:checked {
+        background-color: red;
+    }
+    
+    input[class="carta"]:active {
+        background-color: yellow;
+    }
+    
+    .carta:checked {
+        background-color: blue;
     }

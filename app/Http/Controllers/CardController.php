@@ -80,4 +80,30 @@ class CardController extends Controller
             'status' => 'success'
         ), 200);
     }
+
+    public function getMatchCards(Request $request){
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods, Authorization, X-Requested-With');
+        
+        
+        //$cards = Card::with('users')->whereId($id);
+        $id = (int)$request['id'];
+
+        $user = User::find($id);
+        
+        foreach ($user->cards as $card) {
+            $cards[] = $card;
+        }
+
+        shuffle($cards);
+
+        for ($i= 0; $i < 5; $i++) { 
+            $cartasAleatorias[] = $cards[$i];
+        }
+
+        return response()->json(array(
+            'fiveCards' => $cartasAleatorias,
+            'status' => 'success'
+        ), 200);
+    }
 }

@@ -3,15 +3,19 @@
         <div class="col-xs-12 col-sm-12 col-md-12 fondo">
             <div *ngIf="identity">
 
-                <div [routerLink]="['new-game']" class="card nueva btn" [hidden]="isHidden">
+                <div [routerLink]="['new-game']" class="card nueva btn" *ngIf="isNueva">
                     <h3>NUEVA PARTIDA</h3>
                 </div>
 
-                <div class="card esperando btn" [hidden]="isWaiting">
+                <div [routerLink]="['match', partidaEnCurso.id]" class="card nueva btn" *ngIf="inGame">
+                    <h3>PARTIDA EN CURSO</h3>
+                </div>
+
+                <div class="card esperando btn" *ngIf="isWaiting">
                     <h3>ESPERANDO AL OPONENTE</h3>
                 </div>
 
-                <div [routerLink]="['new-game']" class="card retado btn" [hidden]="isChallenged">
+                <div [routerLink]="['new-game']" class="card retado btn" *ngIf="isChallenged">
                     <h3>TE HAN RETADO A UN DUELO</h3>
                 </div>
             </div>

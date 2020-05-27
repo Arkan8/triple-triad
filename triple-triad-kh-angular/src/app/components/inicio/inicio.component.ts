@@ -4,6 +4,7 @@ import { User } from '../../models/user';
 import  { UserService } from '../../services/user.service';
 import {Card} from '../../models/card';
 import {Duel} from '../../models/duel';
+import {Match} from '../../models/match';
 import {CardService} from '../../services/card.service';
 
 @Component({
@@ -19,9 +20,11 @@ export class InicioComponent implements OnInit {
   public allDuels: Array<any>;
   public retadores: Array<any> = [];
   public retados: Array<any> = [];
-  public isHidden = false;
-  public isWaiting = true;
-  public isChallenged = true;
+  public partidaEnCurso: Match;
+  public isNueva = true;
+  public isWaiting = false;
+  public isChallenged = false;
+  public inGame = false;
 
   constructor(
     private _route: ActivatedRoute,
@@ -37,7 +40,20 @@ export class InicioComponent implements OnInit {
   ngOnInit(): void {
 
     //Ver si hay partidas para el usuario
-
+    this._userService.getPartidas(this.identity.sub).subscribe(
+      (response) => {
+        if (response.status == 'success') {
+          this.partidaEnCurso = response.match;
+          this.inGame = true;
+          this.isNueva = false;
+          this.isChallenged = false;
+          this.isWaiting = false;
+        }
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   
     //Obtener duelos
     this._userService.getDuels().subscribe(
@@ -54,17 +70,17 @@ export class InicioComponent implements OnInit {
           for (let i = 0; i < this.retadores.length; i++) {
             for (let j = 0; j < this.retados.length; j++) {
               if (this.identity.sub == this.retadores[i] || this.identity.sub == this.retados[j]) {
-                this.isHidden = true;
+                this.isNueva = false;
 
                 if(this.identity.sub == this.retadores[i]){
-                  this.isWaiting = false;
-                  this.isChallenged = true;
-                  this.isHidden = true;
-                } 
-                else if (this.identity.sub = this.retados[j]) {
                   this.isWaiting = true;
                   this.isChallenged = false;
-                  this.isHidden = true;
+                  this.isNueva = false;
+                } 
+                else if (this.identity.sub = this.retados[j]) {
+                  this.isWaiting = false;
+                  this.isChallenged = true;
+                  this.isNueva = false;
                 }
               }
             }

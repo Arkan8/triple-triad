@@ -123,9 +123,12 @@ export class UserService{
         return this._http.get(this.url + 'getMatch/' + id, {headers: headers});
     }
 
-    getPartidas(): Observable<any>{
+    getPartidas(id: any): Observable<any>{
+        let json = JSON.stringify(id);
+        let params = "id="+json;
+
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
         
-        return this._http.get(this.url + 'getPartidas', {headers: headers});
+        return this._http.post(this.url + 'getPartidas', params, {headers: headers});
     }
 }

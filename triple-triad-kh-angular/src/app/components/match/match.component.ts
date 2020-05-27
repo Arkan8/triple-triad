@@ -19,6 +19,8 @@ export class MatchComponent implements OnInit {
   public token;
   public match: Match;
   public match_id: number;
+  public cartas1: Array<any> = [];
+  public cartas2: Array<any> = [];
   private sub: any;
 
   constructor(
@@ -43,6 +45,28 @@ export class MatchComponent implements OnInit {
       (response) => {
         if(response.status == 'success'){
           this.match = response.match;
+
+
+          //CARTAS PLAYER 1
+          this._cardService.getMatchCards(this.match.player1).subscribe(
+            (response) => {
+              this.cartas1 = response.fiveCards;
+
+              //CARTAS PLAYER 2
+              this._cardService.getMatchCards(this.match.player2).subscribe(
+                (response) => {
+                  this.cartas2 = response.fiveCards;
+                },
+                (error) => {
+                  console.log(error);
+                }
+              );
+            },
+            (error) => {
+              console.log(error);
+            }
+          );
+          
         }
       },
       (error) => {
@@ -51,30 +75,11 @@ export class MatchComponent implements OnInit {
     );
   }
 
-  /* todo = [
-    'Get to work',
-    'Pick up groceries',
-    'Go home',
-    'Fall asleep'
-  ];
+  hacerJugada(){
+    $( document ).ready(function() {
+      var radioValue = $("input[name='cartaSeleccionada']:checked").next().attr('src');
+      $("input[name='posicionCarta']:checked").next().next().attr('src', radioValue);;
 
-  done = [
-    'Get up',
-    'Brush teeth',
-    'Take a shower',
-    'Check e-mail',
-    'Walk dog'
-  ];
-
-  drop(event: CdkDragDrop<string[]>) {
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(event.previousContainer.data,
-                        event.container.data,
-                        event.previousIndex,
-                        event.currentIndex);
-    }
-  } */
-
+    });
+  }
 }

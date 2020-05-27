@@ -247,13 +247,15 @@ class UserController extends Controller
         ), 200);
     }
 
-    public function getPartidas(){
+    public function getPartidas(Request $request){
         header('Access-Control-Allow-Origin: *');
+
+        $id = (int)$request['id'];
         
-        $matches = Match::all();
+        $match = Match::where('player1', $id)->orWhere('player2', $id)->first();
         
         return response()->json(array(
-            'matches' => $matches,
+            'match' => $match,
             'status' => 'success'
         ), 200);
     }
