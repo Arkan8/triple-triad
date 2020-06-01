@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Helpers\JwtAuth;
 use App\User;
 use App\Card;
+use App\Board;
 
 class CardController extends Controller
 {
@@ -40,7 +41,6 @@ class CardController extends Controller
         header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods, Authorization, X-Requested-With');
         
         
-        //$cards = Card::with('users')->whereId($id);
         $id = (int)$request['id'];
 
         $user = User::find($id);
@@ -60,7 +60,6 @@ class CardController extends Controller
         header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods, Authorization, X-Requested-With');
         
         
-        //$cards = Card::with('users')->whereId($id);
         $id = (int)$request['id'];
 
         $user = User::find($id);
@@ -86,7 +85,6 @@ class CardController extends Controller
         header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods, Authorization, X-Requested-With');
         
         
-        //$cards = Card::with('users')->whereId($id);
         $id = (int)$request['id'];
 
         $user = User::find($id);
@@ -105,5 +103,58 @@ class CardController extends Controller
             'fiveCards' => $cartasAleatorias,
             'status' => 'success'
         ), 200);
+    }
+
+    public function getSingleCard(Request $request){
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods, Authorization, X-Requested-With');
+        
+        $id = (int)$request['id'];
+
+        $cartaSeleccionada = Card::find($id);
+        
+        return response()->json(array(
+            'cartaSeleccionada' => $cartaSeleccionada,
+            'status' => 'success'
+        ), 200);
+    }
+
+    public function getGrid(Request $request){
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods, Authorization, X-Requested-With');
+        
+        $id = (int)$request['id'];
+
+        $grid = Card::find($id);
+        
+        return response()->json(array(
+            'grid' => $grid,
+            'status' => 'success'
+        ), 200);
+    }
+
+    public function updateGrid(Request $request){
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods, Authorization, X-Requested-With');
+
+        $board_id = (int)$request['board_id'];
+        $grid = $request['grid'];
+        $card_id = (int)$request['card_id'];
+
+        var_dump($board_id);
+        var_dump($grid);
+        var_dump($card_id);
+
+        $board_update = Board::find($board_id);
+
+        $board_update->{$grid} = $card_id;
+
+        $board_update->save();
+
+        return response()->json(array(
+            'status' => 'success',
+            'message' => 'Grid actualizado'
+        ), 200);
+        
     }
 }

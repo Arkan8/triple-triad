@@ -10,6 +10,7 @@ export class UserService{
     public url: string;
     public identity;
     public token;
+    public cartas;
 
     constructor(
         public _http: HttpClient
@@ -50,6 +51,18 @@ export class UserService{
         return this.identity;
     }
 
+    getCartas(){
+        let cartas = JSON.parse(sessionStorage.getItem('cartas'));
+
+        if (cartas != "undefined") {
+            this.cartas = cartas;
+        } else{
+            this.cartas = null;
+        }
+        
+        return this.cartas;
+    }
+
     getToken(){
         let token = localStorage.getItem('token');
 
@@ -68,21 +81,8 @@ export class UserService{
         return this._http.get(this.url + 'usersList', {headers: headers});
     }
 
-    createDuel(duel): Observable<any>{
-        
-        let json1 = JSON.stringify(duel.retador);
-        let json2 = JSON.stringify(duel.retado);
-        let json3 = JSON.stringify(duel.retadorName);
-        let json4 = JSON.stringify(duel.retadoName);
-        let retador = json1;
-        let retado = json2;
-        let retadorName = json3;
-        let retadoName = json4;
-
-        
+    createDuel(duel): Observable<any>{        
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-
-        let params = { retador, retado, retadorName, retadoName };
 
         return this._http.post(this.url+'createDuel', duel,  {headers: headers});
     }
@@ -104,12 +104,10 @@ export class UserService{
 
     createGame(match): Observable<any>{
         
-        
         var json_string = JSON.stringify(match);
 
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
 
-/*         let params = { player1, player2, player1Name, player2Name, puntuacionPlayer1, puntuacionPlayer2, cartasPlayer1, cartasPlayer2 }; */
         return this._http.post(this.url+'createGame', json_string,  {headers: headers});
     }
 
@@ -130,5 +128,24 @@ export class UserService{
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
         
         return this._http.post(this.url + 'getPartidas', params, {headers: headers});
+    }
+
+    setBoard(id: any): Observable<any>{
+
+        let json = JSON.stringify(id);
+        let params = "id="+json;
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+        
+        return this._http.post(this.url + 'setBoard', params, {headers: headers});
+    }
+
+    getBoard(id: any): Observable<any>{
+        let json = JSON.stringify(id);
+        let params = "id="+json;
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+        
+        return this._http.post(this.url + 'getBoard', params, {headers: headers});
     }
 }

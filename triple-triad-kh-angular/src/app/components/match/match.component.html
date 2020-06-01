@@ -6,69 +6,77 @@
                 <div class="btn-group" data-toggle="buttons">
                     <label class="btn">
                       <input type="radio" name="cartaSeleccionada" value="{{card.nombre}}" autocomplete="off">
-                      <img src="../../../assets/images/nv{{card.rareza}}_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="60%" class="img-shadow-1"><br>
-                    </label>
-                  </div>
-                
-            </span>
-            <!-- <img src="../../../assets/images/back.png" style="margin-bottom: 14px;" width="50%" class="img-shadow-1"><br>
-            <img src="../../../assets/images/back.png" style="margin-bottom: 14px;" width="50%" class="img-shadow-1"><br>
-            <img src="../../../assets/images/back.png" style="margin-bottom: 14px;" width="50%" class="img-shadow-1"><br>
-            <img src="../../../assets/images/back.png" style="margin-bottom: 14px;" width="50%" class="img-shadow-1"> -->
+                      <img src="../../../assets/images/nv{{card.rareza}}_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="60%" class="img-shadow-1">
+                      <span hidden>{{card.id}}</span>
+            <br>
+            </label>
         </div>
 
-        <div class="col-8">
-            <table class="tabla">
-                <tr>
-                    <!-- btn-group-toggle -->
-                    <td class="btn-group grid" data-toggle="buttons" name="grid1"><label class="btn">
+        </span>
+
+    </div>
+
+    <div class="col-8">
+        <table class="tabla">
+            <tr>
+                <!-- btn-group-toggle -->
+                <td class="btn-group grid" data-toggle="buttons" name="grid1"><label class="btn">
                         <input type="radio" name="posicionCarta" id="posicion" autocomplete="off" checked><br>
-                        <img src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                        <img *ngIf="grid1 == null" src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                        <img *ngIf="grid1 != null" src="../../../assets/images/nv{{grid1.rareza}}_azul/{{grid1.img_aliado}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
                       </label></td>
-                    <td class="btn-group grid" data-toggle="buttons" name="grid2"><label class="btn">
+                <td class="btn-group grid" data-toggle="buttons" name="grid2"><label class="btn">
                         <input type="radio" name="posicionCarta" id="posicion" autocomplete="off" checked><br>
-                        <img src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                        <img *ngIf="grid2 == null" src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                        <img *ngIf="grid2 != null" src="../../../assets/images/nv{{grid2.rareza}}_azul/{{grid2.img_aliado}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
                       </label></td>
-                    <td class="btn-group grid" data-toggle="buttons" name="grid3"><label class="btn">
+                <td class="btn-group grid" data-toggle="buttons" name="grid3"><label class="btn">
                         <input type="radio" name="posicionCarta" id="posicion" autocomplete="off" checked><br>
-                        <img src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
-                      </label></td>
-                </tr>
-                <tr>
-                    <td class="btn-group grid" data-toggle="buttons" name="grid4"><label class="btn">
+                        <img *ngIf="grid3 == null" src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                        <img *ngIf="grid3 != null" src="../../../assets/images/nv{{grid3.rareza}}_azul/{{grid3.img_aliado}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                       </label></td>
+            </tr>
+            <tr>
+                <td class="btn-group grid" data-toggle="buttons" name="grid4"><label class="btn">
                         <input type="radio" name="posicionCarta" id="posicion" autocomplete="off" checked><br>
-                        <img src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                        <img *ngIf="grid4 == null" src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                        <img *ngIf="grid4 != null" src="../../../assets/images/nv{{grid4.rareza}}_azul/{{grid4.img_aliado}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
                     </label></td>
-                    <td class="btn-group grid" data-toggle="buttons" name="grid5"><label class="btn">
+                <td class="btn-group grid" data-toggle="buttons" name="grid5"><label class="btn">
                         <input type="radio" name="posicionCarta" id="posicion" autocomplete="off" checked><br>
-                        <img src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                        <img *ngIf="grid5 == null" src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                        <img *ngIf="grid5 != null" src="../../../assets/images/nv{{grid5.rareza}}_azul/{{grid5.img_aliado}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
                     </label></td>
-                    <td class="btn-group grid" data-toggle="buttons" name="grid6"><label class="btn">
+                <td class="btn-group grid" data-toggle="buttons" name="grid6"><label class="btn">
                         <input type="radio" name="posicionCarta" id="posicion" autocomplete="off" checked><br>
-                        <img src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                        <img *ngIf="grid6 == null" src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                        <img *ngIf="grid6 != null" src="../../../assets/images/nv{{grid6.rareza}}_azul/{{grid6.img_aliado}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
                     </label></td>
-                </tr>
-                <tr>
-                    <td class="btn-group grid" data-toggle="buttons" name="grid7"><label class="btn">
+            </tr>
+            <tr>
+                <td class="btn-group grid" data-toggle="buttons" name="grid7"><label class="btn">
                         <input type="radio" name="posicionCarta" id="posicion" autocomplete="off" checked><br>
-                        <img src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                        <img *ngIf="grid7 == null" src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                        <img *ngIf="grid7 != null" src="../../../assets/images/nv{{grid7.rareza}}_azul/{{grid7.img_aliado}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
                     </label></td>
-                    <td class="btn-group grid" data-toggle="buttons" name="grid8"><label class="btn">
+                <td class="btn-group grid" data-toggle="buttons" name="grid8"><label class="btn">
                         <input type="radio" name="posicionCarta" id="posicion" autocomplete="off" checked><br>
-                        <img src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                        <img *ngIf="grid8 == null" src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                        <img *ngIf="grid8 != null" src="../../../assets/images/nv{{grid8.rareza}}_azul/{{grid8.img_aliado}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
                     </label></td>
-                    <td class="btn-group grid" data-toggle="buttons" name="grid9"><label class="btn">
+                <td class="btn-group grid" data-toggle="buttons" name="grid9"><label class="btn">
                         <input type="radio" name="posicionCarta" id="posicion" autocomplete="off" checked><br>
-                        <img src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                        <img *ngIf="grid9 == null" src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                        <img *ngIf="grid9 != null" src="../../../assets/images/nv{{grid9.rareza}}_azul/{{grid9.img_aliado}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
                     </label></td>
-                </tr>
-            </table>
-            <hr>
-            <button (click)="hacerJugada()" class="btn btn-primary" name="botonJugar">Hacer jugada</button>
-        </div>
-        <div class="col-2 cartas ">
-            <div class="puntuacion">5</div>
-            <span *ngFor="let card of cartas1">
+            </tr>
+        </table>
+        <hr>
+        <button (click)="hacerJugada()" class="btn btn-primary" id="botonJugar">Hacer jugada</button>
+    </div>
+    <div class="col-2 cartas ">
+        <div class="puntuacion">5</div>
+        <span *ngFor="let card of cartas1">
                 <div>
                     <label class="btn">
                       <img src="../../../assets/images/back.png" style="margin-bottom: 14px;" width="60%" class="img-shadow-1"><br>
@@ -76,6 +84,6 @@
                   </div>
                 
             </span>
-        </div>
     </div>
+</div>
 </div>

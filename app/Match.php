@@ -11,4 +11,8 @@ class Match extends Model
     public function users(){
         return $this->hasMany(User::class);
     }
+
+    public function packs(){
+        return $this->belongsTo(Board::class);
+    }
 }

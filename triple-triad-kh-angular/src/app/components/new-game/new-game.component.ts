@@ -193,7 +193,7 @@ export class NewGameComponent implements OnInit {
                         this._userService.deleteDuel(this.identity.username).subscribe(
                           (response) => {
                             if (response.status == 'success') {
-                              
+                              //Se ha eliminado el duelo pendiente
                             }
                           },
                           (error) => {

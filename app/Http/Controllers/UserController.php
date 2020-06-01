@@ -10,6 +10,7 @@ use App\User;
 use App\Card;
 use App\Duel;
 use App\Match;
+use App\Board;
 use App\Helpers\JwtAuth;
 
 class UserController extends Controller
@@ -223,7 +224,7 @@ class UserController extends Controller
             'status' => 'success',
             'id' => $match->id,
             'code' => 200,
-            'message' => 'Duelo creado correctamente'
+            'message' => 'Juego creado correctamente'
         );
 
         return response()->json($data, 200);
@@ -256,6 +257,39 @@ class UserController extends Controller
         
         return response()->json(array(
             'match' => $match,
+            'status' => 'success'
+        ), 200);
+    }
+
+    public function setBoard(Request $request){
+        header('Access-Control-Allow-Origin: *');
+
+        $id = (int)$request['id'];
+
+        $board = new Board();
+
+        $board->match_id = $id;
+        
+        $board->save();
+
+        $data = array(
+            'status' => 'success',
+            'code' => 200,
+            'message' => 'Board'
+        );
+
+        return response()->json($data, 200);
+    }
+
+    public function getBoard(Request $request){
+        header('Access-Control-Allow-Origin: *');
+
+        $id = (int)$request['id'];
+        
+        $board = Board::where('match_id', $id)->first();
+        
+        return response()->json(array(
+            'board' => $board,
             'status' => 'success'
         ), 200);
     }

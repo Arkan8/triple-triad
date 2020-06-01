@@ -44,10 +44,12 @@ export class InicioComponent implements OnInit {
       (response) => {
         if (response.status == 'success') {
           this.partidaEnCurso = response.match;
-          this.inGame = true;
-          this.isNueva = false;
-          this.isChallenged = false;
-          this.isWaiting = false;
+          if (this.partidaEnCurso) {
+            this.inGame = true;
+            this.isNueva = false;
+            this.isChallenged = false;
+            this.isWaiting = false;
+          }
         }
       },
       (error) => {
