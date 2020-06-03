@@ -21,12 +21,13 @@ export class MatchComponent implements OnInit {
 
   public identity;    
   public token;
-  public cartasMano;
+  public cartasMano1;
+  public cartasMano2;
   public match: Match;
   public board: Board;
   public match_id: number;
-  public cartas1: Array<any> = [];
-  public cartas2: Array<any> = [];
+  public cartas1;
+  public cartas2;
   private sub: any;
   public cartaSeleccionada;
   public grid1;
@@ -47,7 +48,8 @@ export class MatchComponent implements OnInit {
   ) { 
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
-    this.cartasMano = this._userService.getCartas();
+    this.cartasMano1 = localStorage.getItem('cartas1');
+    this.cartasMano2 = localStorage.getItem('cartas2');
     this.match = new Match (1, 1, 1, '', '', 1, 1, '', '');
   }
 
@@ -86,7 +88,6 @@ export class MatchComponent implements OnInit {
               this._cardService.getGrid(this.board[grid]).subscribe(
                 (response) => {
                   this[grid] = response.grid;
-                  console.log(this[grid]);
                 },
                 (error) => {
 
@@ -100,35 +101,125 @@ export class MatchComponent implements OnInit {
             }
           )
 
-          //CARTAS PLAYER 1
-          
-            this._cardService.getMatchCards(this.match.player1).subscribe(
-              (response) => {
-                if (this.cartasMano == null) {
-                  this.cartas1 = response.fiveCards;
-    
-                  sessionStorage.setItem('cartas', JSON.stringify(this.cartas1));
-                } else {
-                  this.cartas1 = this.cartasMano;
+          //CARTAS PLAYER 
+          if (this.cartasMano2 == null || this.cartasMano2 == 'undefined' || this.cartasMano2 == '' || this.cartasMano2 == []) {
+              this._cardService.getMatchCards(this.match.player1).subscribe(
+                (response) => {
+                  localStorage.setItem('cartas1', JSON.stringify(this.cartas1));
+                  if (this.cartasMano1 == null || this.cartasMano1 == 'undefined' || this.cartasMano1 == '' || this.cartasMano1 == []) {
+                    this.cartas1 = response.fiveCards;
+                  } else{
+                    this.cartas1 = JSON.parse(localStorage.getItem('cartas1'));
+                  }
+                  
+                  this._cardService.getMatchCards(this.match.player2).subscribe(
+                    (response) => {
+                      localStorage.setItem('cartas2', JSON.stringify(this.cartas2));
+                      if (this.cartasMano2 == null || this.cartasMano2 == 'undefined' || this.cartasMano2 == '' || this.cartasMano2 == []) {
+                        this.cartas2 = response.fiveCards;
+                      } else{
+                        this.cartas2 = JSON.parse(localStorage.getItem('cartas2'));
+                      }
+
+                    if (this.match.player1 == this.identity.sub) {
+                        localStorage.setItem('cartas1', JSON.stringify(this.cartas1));
+
+                      } else if(this.match.player2 == this.identity.sub) {
+                        localStorage.setItem('cartas2', JSON.stringify(this.cartas2));
+
+                      } else{
+
+                      }
+                    },
+                    (error) => {
+
+                    }
+                  );
+                  
+                },
+                (error) => {
+                  console.log(error);
                 }
-              },
-              (error) => {
-                console.log(error);
-              }
-            );
+              );
+            
+          } else{
+            this.cartasMano1 = localStorage.getItem('cartas1');
+            this.cartasMano2 = localStorage.getItem('cartas2');
+
+            if (this.cartasMano1 != 'undefined') {
+              this.cartas1 = JSON.parse(this.cartasMano1);
+            }
+            if (this.cartasMano2 != 'undefined') {
+              this.cartas2 = JSON.parse(this.cartasMano2);
+            }
+          }
+          if (this.cartasMano1 == null || this.cartasMano1 == 'undefined' || this.cartasMano1 == '' || this.cartasMano1 == []) {
+              this._cardService.getMatchCards(this.match.player1).subscribe(
+                (response) => {
+                  localStorage.setItem('cartas1', JSON.stringify(this.cartas1));
+                  if (this.cartasMano1 == null || this.cartasMano1 == 'undefined' || this.cartasMano1 == '' || this.cartasMano1 == []) {
+                    this.cartas1 = response.fiveCards;
+                  } else{
+                    this.cartas1 = JSON.parse(localStorage.getItem('cartas1'));
+                  }
+                  
+                  this._cardService.getMatchCards(this.match.player2).subscribe(
+                    (response) => {
+                      localStorage.setItem('cartas2', JSON.stringify(this.cartas2));
+                      if (this.cartasMano2 == null || this.cartasMano2 == 'undefined' || this.cartasMano2 == '' || this.cartasMano2 == []) {
+                        this.cartas2 = response.fiveCards;
+                      } else{
+                        this.cartas2 = JSON.parse(localStorage.getItem('cartas2'));
+                      }
+
+                    if (this.match.player1 == this.identity.sub) {
+                        localStorage.setItem('cartas1', JSON.stringify(this.cartas1));
+
+                      } else if(this.match.player2 == this.identity.sub) {
+                        localStorage.setItem('cartas2', JSON.stringify(this.cartas2));
+
+                      } else{
+
+                      }
+                    },
+                    (error) => {
+
+                    }
+                  );
+                  
+                },
+                (error) => {
+                  console.log(error);
+                }
+              );
+            
+          } else{
+            this.cartasMano1 = localStorage.getItem('cartas1');
+            this.cartasMano2 = localStorage.getItem('cartas2');
+
+            if (this.cartasMano1 != 'undefined') {
+              this.cartas1 = JSON.parse(this.cartasMano1);
+            }
+            if (this.cartasMano2 != 'undefined') {
+              this.cartas2 = JSON.parse(this.cartasMano2);
+            }
+          }
         }
       },
       (error) => {
         console.log(error)
       }
     );
+                
 
   }
   
 
   hacerJugada(){
 
+
     var idCartaSeleccionada = $("input[name='cartaSeleccionada']:checked").next().next().text();
+
     this._cardService.getSingleCard(+idCartaSeleccionada).subscribe(
       (response) => {
             this.cartaSeleccionada = response.cartaSeleccionada;
@@ -137,27 +228,34 @@ export class MatchComponent implements OnInit {
             /* var radioValue = $("input[name='cartaSeleccionada']:checked").next().attr('src');
             $("input[name='posicionCarta']:checked").next().next().attr('src', radioValue); */
 
-            var grid = $("input[name='posicionCarta']:checked").parent().parent().attr('name');
+            var grid = $("input[name='posicionCarta']:checked").parent().parent().parent().attr('name');
 
             this._cardService.updateGrid(this.board.id, grid, this.cartaSeleccionada.id).subscribe(
               (response) => {
                 //Tablero actualizado
               },
               (error) => {
-
+                
               }
+              );
+              //$("input[name='cartaSeleccionada']:checked").remove();
+              
+              
+              this.redirectTo('/match');
+            },
+            (error) => {
+              console.log(error);
+            }
             );
-
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
-
-    /* var valor_arriba = $('#valor_arriba').text();
-    console.log(valor_arriba); */
-
-    
-
+            
+            /* var valor_arriba = $('#valor_arriba').text();
+            console.log(valor_arriba); */
+            
   }
+
+  redirectTo(uri:string){
+    this._router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this._router.navigate([uri, this.match_id]));
+ }
+
 }

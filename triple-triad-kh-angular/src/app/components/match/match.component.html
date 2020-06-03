@@ -1,18 +1,37 @@
 <div class="col-md-12">
     <div class="row fondo">
-        <div class="col-2">
-            <div class="puntuacion">5</div>
+    <div class="col-2">
+        <div class="puntuacion">5</div>
+
+        <div *ngIf="match.player1 == identity.sub">
+            
             <span *ngFor="let card of cartas1">
-                <div class="btn-group" data-toggle="buttons">
+                <div *ngIf="board != null" class="btn-group" data-toggle="buttons" [hidden]="card.id == board.grid1 || card.id == board.grid2 || card.id == board.grid3 || card.id == board.grid4 || card.id == board.grid5 || card.id == board.grid6 || card.id == board.grid7 || card.id == board.grid8 || card.id == board.grid9">
                     <label class="btn">
-                      <input type="radio" name="cartaSeleccionada" value="{{card.nombre}}" autocomplete="off">
-                      <img src="../../../assets/images/nv{{card.rareza}}_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="60%" class="img-shadow-1">
-                      <span hidden>{{card.id}}</span>
-            <br>
-            </label>
+                    <input type="radio" name="cartaSeleccionada" value="{{card.nombre}}" autocomplete="off">
+                    <img *ngIf="match.player1 == identity.sub" src="../../../assets/images/nv{{card.rareza}}_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="60%" class="img-shadow-1">
+                    <img *ngIf="match.player2 == identity.sub" src="../../../assets/images/nv{{card.rareza}}_rojo/{{card.img_rival}}" style="margin-bottom: 14px;" width="60%" class="img-shadow-1">
+                    <span hidden>{{card.id}}</span>
+                    <br>
+                    </label>
+                </div>
+            </span>
         </div>
 
-        </span>
+        <div *ngIf="match.player2 == identity.sub">
+            
+            <span *ngFor="let card of cartas2">
+                <div *ngIf="board != null" class="btn-group" data-toggle="buttons" [hidden]="card.id == board.grid1 || card.id == board.grid2 || card.id == board.grid3 || card.id == board.grid4 || card.id == board.grid5 || card.id == board.grid6 || card.id == board.grid7 || card.id == board.grid8 || card.id == board.grid9">
+                    <label class="btn">
+                    <input type="radio" name="cartaSeleccionada" value="{{card.nombre}}" autocomplete="off">
+                    <img *ngIf="match.player1 == identity.sub" src="../../../assets/images/nv{{card.rareza}}_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="60%" class="img-shadow-1">
+                    <img *ngIf="match.player2 == identity.sub" src="../../../assets/images/nv{{card.rareza}}_rojo/{{card.img_rival}}" style="margin-bottom: 14px;" width="60%" class="img-shadow-1">
+                    <span hidden>{{card.id}}</span>
+                    <br>
+                    </label>
+                </div>
+            </span>
+        </div>
 
     </div>
 
@@ -21,54 +40,99 @@
             <tr>
                 <!-- btn-group-toggle -->
                 <td class="btn-group grid" data-toggle="buttons" name="grid1"><label class="btn">
+                    <span *ngIf="grid1 == null">
                         <input type="radio" name="posicionCarta" id="posicion" autocomplete="off" checked><br>
-                        <img *ngIf="grid1 == null" src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
-                        <img *ngIf="grid1 != null" src="../../../assets/images/nv{{grid1.rareza}}_azul/{{grid1.img_aliado}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                        <img src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                    </span>
+                    <span *ngIf="grid1 != null">
+                        <img *ngIf="match.cartasPlayer1.includes(grid1.img_aliado)" src="../../../assets/images/nv{{grid1.rareza}}_azul/{{grid1.img_aliado}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                        <img *ngIf="match.cartasPlayer2.includes(grid1.img_rival)" src="../../../assets/images/nv{{grid1.rareza}}_rojo/{{grid1.img_rival}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                    </span>
                       </label></td>
                 <td class="btn-group grid" data-toggle="buttons" name="grid2"><label class="btn">
+                    <span *ngIf="grid2 == null">
                         <input type="radio" name="posicionCarta" id="posicion" autocomplete="off" checked><br>
-                        <img *ngIf="grid2 == null" src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
-                        <img *ngIf="grid2 != null" src="../../../assets/images/nv{{grid2.rareza}}_azul/{{grid2.img_aliado}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
-                      </label></td>
+                        <img src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                    </span>
+                    <span *ngIf="grid2 != null">
+                        <img *ngIf="match.cartasPlayer1.includes(grid2.img_aliado)" src="../../../assets/images/nv{{grid2.rareza}}_azul/{{grid2.img_aliado}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                        <img *ngIf="match.cartasPlayer2.includes(grid2.img_rival)" src="../../../assets/images/nv{{grid2.rareza}}_rojo/{{grid2.img_rival}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                    </span>
+                </label></td>
                 <td class="btn-group grid" data-toggle="buttons" name="grid3"><label class="btn">
+                    <span *ngIf="grid3 == null">
                         <input type="radio" name="posicionCarta" id="posicion" autocomplete="off" checked><br>
-                        <img *ngIf="grid3 == null" src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
-                        <img *ngIf="grid3 != null" src="../../../assets/images/nv{{grid3.rareza}}_azul/{{grid3.img_aliado}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
-                       </label></td>
+                        <img src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                    </span>
+                    <span *ngIf="grid3 != null">
+                        <img *ngIf="match.cartasPlayer1.includes(grid3.img_aliado)" src="../../../assets/images/nv{{grid3.rareza}}_azul/{{grid3.img_aliado}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                        <img *ngIf="match.cartasPlayer2.includes(grid3.img_rival)" src="../../../assets/images/nv{{grid3.rareza}}_rojo/{{grid3.img_rival}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                    </span>
+                </label></td>
             </tr>
             <tr>
                 <td class="btn-group grid" data-toggle="buttons" name="grid4"><label class="btn">
+                    <span *ngIf="grid4 == null">
                         <input type="radio" name="posicionCarta" id="posicion" autocomplete="off" checked><br>
-                        <img *ngIf="grid4 == null" src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
-                        <img *ngIf="grid4 != null" src="../../../assets/images/nv{{grid4.rareza}}_azul/{{grid4.img_aliado}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
-                    </label></td>
+                        <img src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                    </span>
+                    <span *ngIf="grid4 != null">
+                        <img *ngIf="match.cartasPlayer1.includes(grid4.img_aliado)" src="../../../assets/images/nv{{grid4.rareza}}_azul/{{grid4.img_aliado}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                        <img *ngIf="match.cartasPlayer2.includes(grid4.img_rival)" src="../../../assets/images/nv{{grid4.rareza}}_rojo/{{grid4.img_rival}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                    </span>
+                </label></td>
                 <td class="btn-group grid" data-toggle="buttons" name="grid5"><label class="btn">
+                    <span *ngIf="grid5 == null">
                         <input type="radio" name="posicionCarta" id="posicion" autocomplete="off" checked><br>
-                        <img *ngIf="grid5 == null" src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
-                        <img *ngIf="grid5 != null" src="../../../assets/images/nv{{grid5.rareza}}_azul/{{grid5.img_aliado}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
-                    </label></td>
+                        <img src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                    </span>
+                    <span *ngIf="grid5 != null">
+                        <img *ngIf="match.cartasPlayer1.includes(grid5.img_aliado)" src="../../../assets/images/nv{{grid5.rareza}}_azul/{{grid5.img_aliado}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                        <img *ngIf="match.cartasPlayer2.includes(grid5.img_rival)" src="../../../assets/images/nv{{grid5.rareza}}_rojo/{{grid5.img_rival}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                    </span>
+                </label></td>
                 <td class="btn-group grid" data-toggle="buttons" name="grid6"><label class="btn">
+                    <span *ngIf="grid6 == null">
                         <input type="radio" name="posicionCarta" id="posicion" autocomplete="off" checked><br>
-                        <img *ngIf="grid6 == null" src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
-                        <img *ngIf="grid6 != null" src="../../../assets/images/nv{{grid6.rareza}}_azul/{{grid6.img_aliado}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
-                    </label></td>
+                        <img src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                    </span>
+                    <span *ngIf="grid6 != null">
+                        <img *ngIf="match.cartasPlayer1.includes(grid6.img_aliado)" src="../../../assets/images/nv{{grid6.rareza}}_azul/{{grid6.img_aliado}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                        <img *ngIf="match.cartasPlayer2.includes(grid6.img_rival)" src="../../../assets/images/nv{{grid6.rareza}}_rojo/{{grid6.img_rival}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                    </span>
+                </label></td>
             </tr>
             <tr>
                 <td class="btn-group grid" data-toggle="buttons" name="grid7"><label class="btn">
+                    <span *ngIf="grid7 == null">
                         <input type="radio" name="posicionCarta" id="posicion" autocomplete="off" checked><br>
-                        <img *ngIf="grid7 == null" src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
-                        <img *ngIf="grid7 != null" src="../../../assets/images/nv{{grid7.rareza}}_azul/{{grid7.img_aliado}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
-                    </label></td>
+                        <img src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                    </span>
+                    <span *ngIf="grid7 != null">
+                        <img *ngIf="match.cartasPlayer1.includes(grid7.img_aliado)" src="../../../assets/images/nv{{grid7.rareza}}_azul/{{grid7.img_aliado}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                        <img *ngIf="match.cartasPlayer2.includes(grid7.img_rival)" src="../../../assets/images/nv{{grid7.rareza}}_rojo/{{grid7.img_rival}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                    </span>
+                </label></td>
                 <td class="btn-group grid" data-toggle="buttons" name="grid8"><label class="btn">
+                    <span *ngIf="grid8 == null">
                         <input type="radio" name="posicionCarta" id="posicion" autocomplete="off" checked><br>
-                        <img *ngIf="grid8 == null" src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
-                        <img *ngIf="grid8 != null" src="../../../assets/images/nv{{grid8.rareza}}_azul/{{grid8.img_aliado}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
-                    </label></td>
+                        <img src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                    </span>
+                    <span *ngIf="grid8 != null">
+                        <img *ngIf="match.cartasPlayer1.includes(grid8.img_aliado)" src="../../../assets/images/nv{{grid8.rareza}}_azul/{{grid8.img_aliado}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                        <img *ngIf="match.cartasPlayer2.includes(grid8.img_rival)" src="../../../assets/images/nv{{grid8.rareza}}_rojo/{{grid8.img_rival}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                    </span>
+                </label></td>
                 <td class="btn-group grid" data-toggle="buttons" name="grid9"><label class="btn">
+                    <span *ngIf="grid9 == null">
                         <input type="radio" name="posicionCarta" id="posicion" autocomplete="off" checked><br>
-                        <img *ngIf="grid9 == null" src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
-                        <img *ngIf="grid9 != null" src="../../../assets/images/nv{{grid9.rareza}}_azul/{{grid9.img_aliado}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
-                    </label></td>
+                        <img src="" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                    </span>
+                    <span *ngIf="grid9 != null">
+                        <img *ngIf="match.cartasPlayer1.includes(grid9.img_aliado)" src="../../../assets/images/nv{{grid9.rareza}}_azul/{{grid9.img_aliado}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                        <img *ngIf="match.cartasPlayer2.includes(grid9.img_rival)" src="../../../assets/images/nv{{grid9.rareza}}_rojo/{{grid9.img_rival}}" style="margin-bottom: 14px;" width="100%" class="img-shadow-1">
+                    </span>
+                </label></td>
             </tr>
         </table>
         <hr>
@@ -76,6 +140,7 @@
     </div>
     <div class="col-2 cartas ">
         <div class="puntuacion">5</div>
+        <div *ngIf="match.player1 == identity.sub">
         <span *ngFor="let card of cartas1">
                 <div>
                     <label class="btn">
@@ -84,6 +149,17 @@
                   </div>
                 
             </span>
+            </div>
+        <div *ngIf="match.player2 == identity.sub">
+        <span *ngFor="let card of cartas2">
+                <div>
+                    <label class="btn">
+                      <img src="../../../assets/images/back.png" style="margin-bottom: 14px;" width="60%" class="img-shadow-1"><br>
+                    </label>
+                  </div>
+                
+            </span>
+            </div>
     </div>
 </div>
 </div>

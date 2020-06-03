@@ -52,7 +52,7 @@ export class UserService{
     }
 
     getCartas(){
-        let cartas = JSON.parse(sessionStorage.getItem('cartas'));
+        let cartas = JSON.parse(localStorage.getItem('cartas'));
 
         if (cartas != "undefined") {
             this.cartas = cartas;
