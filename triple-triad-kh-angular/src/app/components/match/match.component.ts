@@ -39,6 +39,9 @@ export class MatchComponent implements OnInit {
   public grid7;
   public grid8;
   public grid9;
+  public contiene = true;
+  public comparador1 = [];
+  public comparador2 = [];
 
   constructor(
     private _route: ActivatedRoute,
@@ -102,6 +105,15 @@ export class MatchComponent implements OnInit {
           )
 
           //CARTAS PLAYER 
+          //Desde aqui
+          
+          
+          /* if (this.comparador1.some(v => this.comparador2.includes(v))) {
+            alert("furrula?");
+          } */
+
+          
+          while (this.contiene) {
           if (this.cartasMano2 == null || this.cartasMano2 == 'undefined' || this.cartasMano2 == '' || this.cartasMano2 == []) {
               this._cardService.getMatchCards(this.match.player1).subscribe(
                 (response) => {
@@ -146,6 +158,7 @@ export class MatchComponent implements OnInit {
             this.cartasMano1 = localStorage.getItem('cartas1');
             this.cartasMano2 = localStorage.getItem('cartas2');
 
+            
             if (this.cartasMano1 != 'undefined') {
               this.cartas1 = JSON.parse(this.cartasMano1);
             }
@@ -204,7 +217,31 @@ export class MatchComponent implements OnInit {
               this.cartas2 = JSON.parse(this.cartasMano2);
             }
           }
+
+          if (this.cartas1 == 'undefined') {
+            
+          } else {
+            this.cartas1.forEach(carta => {
+              this.comparador1.push(carta.nombre);
+            });
+          }
+
+          if (this.cartas2 == 'undefined') {
+            
+          } else {
+            this.cartas2.forEach(carta => {
+              this.comparador2.push(carta.nombre);
+            });
+          }
+
+          if (this.comparador1.some(v => this.comparador2.includes(v))) {
+            this.contiene = false;
+          }
+
         }
+      }
+        //Hasta aqui
+
       },
       (error) => {
         console.log(error)
