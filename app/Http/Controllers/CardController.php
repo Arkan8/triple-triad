@@ -7,6 +7,7 @@ use App\Helpers\JwtAuth;
 use App\User;
 use App\Card;
 use App\Board;
+use App\Match;
 
 class CardController extends Controller
 {
@@ -141,10 +142,6 @@ class CardController extends Controller
         $grid = $request['grid'];
         $card_id = (int)$request['card_id'];
 
-        var_dump($board_id);
-        var_dump($grid);
-        var_dump($card_id);
-
         $board_update = Board::find($board_id);
 
         $board_update->{$grid} = $card_id;
@@ -157,4 +154,26 @@ class CardController extends Controller
         ), 200);
         
     }
+
+    public function updateCartas(Request $request){
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods, Authorization, X-Requested-With');
+
+        $nuevasCartas1 = $request['nuevasCartas1'];
+        $nuevasCartas2 = $request['nuevasCartas2'];
+        $match_id = $request['match_id'];
+
+        $match_update = Match::find($match_id);
+
+        $match_update->cartasPlayer1 = $nuevasCartas1;
+        $match_update->cartasPlayer2 = $nuevasCartas2;
+
+        $match_update->save();
+
+        return response()->json(array(
+            'status' => 'success',
+            'message' => 'Cartas actualizadas'
+        ), 200);
+    }
+
 }

@@ -76,15 +76,24 @@ export class CardService{
         params = params.append('grid', grid);
         params = params.append('card_id', card_id);
 
-        /* board_id = JSON.stringify(board_id);
-        card_id = JSON.stringify(card_id); */
-
-        //let params = {"board_id": board_id, "grid": grid, "card_id": card_id};
-
         let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
         
         return this._http.post(this.url + 'updateGrid', params, {headers: headers});
     }
     
+    updateCartas(nuevasCartas1, nuevasCartas2, match_id): Observable<any>{
+
+            // Initialize Params Object
+        let params = new HttpParams();
+
+        // Begin assigning parameters
+        params = params.append('nuevasCartas1', nuevasCartas1);
+        params = params.append('nuevasCartas2', nuevasCartas2);
+        params = params.append('match_id', match_id);
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+        
+        return this._http.post(this.url + 'updateCartas', params, {headers: headers});
+    }
 
 }

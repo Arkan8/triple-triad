@@ -31,6 +31,7 @@ Route::post('/fiveRandomCards', 'CardController@fiveRandomCards');
 Route::post('/getSingleCard', 'CardController@getSingleCard');
 Route::post('/getGrid', 'CardController@getGrid');
 Route::post('/updateGrid', 'CardController@updateGrid');
+Route::post('/updateCartas', 'CardController@updateCartas');
 Route::post('/getMatchCards', 'CardController@getMatchCards');
 Route::post('/createDuel', 'UserController@createDuel');
 Route::post('/setBoard', 'UserController@setBoard');
