@@ -161,7 +161,7 @@ class CardController extends Controller
 
         $nuevasCartas1 = $request['nuevasCartas1'];
         $nuevasCartas2 = $request['nuevasCartas2'];
-        $match_id = $request['match_id'];
+        $match_id = (int)$request['match_id'];
 
         $match_update = Match::find($match_id);
 
