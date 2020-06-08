@@ -1,7 +1,7 @@
 <div class="col-md-12">
     <div class="row fondo">
         <div class="col-2">
-            <div class="puntuacion">5</div>
+            <div class="puntuacion">{{puntuacion1}}</div>
 
             <div *ngIf="match.player1 == identity.sub">
 
@@ -147,7 +147,7 @@
     <button (click)="hacerJugada()" class="btn btn-primary" id="botonJugar">Hacer jugada</button>
 </div>
 <div class="col-2 cartas ">
-    <div class="puntuacion">5</div>
+    <div class="puntuacion">{{puntuacion2}}</div>
     <div *ngIf="match.player1 == identity.sub">
         <span *ngFor="let card of cartas1">
                 <div>
