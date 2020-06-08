@@ -148,4 +148,72 @@ export class UserService{
         
         return this._http.post(this.url + 'getBoard', params, {headers: headers});
     }
+
+    updateMatchCards1(match_id, stringCartas): Observable<any>{
+
+            // Initialize Params Object
+        let params = new HttpParams();
+
+        // Begin assigning parameters
+        params = params.append('match_id', match_id);
+        params = params.append('stringCartas', stringCartas);
+        
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+        
+        return this._http.post(this.url + 'updateMatchCards1', params, {headers: headers});
+    }
+
+    updateMatchCards2(match_id, stringCartas): Observable<any>{
+
+            // Initialize Params Object
+        let params = new HttpParams();
+
+        // Begin assigning parameters
+        params = params.append('match_id', match_id);
+        params = params.append('stringCartas', stringCartas);
+        
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+        
+        return this._http.post(this.url + 'updateMatchCards2', params, {headers: headers});
+    }
+
+    updateCartasJugada(match_id, stringCartas1, stringCartas2): Observable<any>{
+
+            // Initialize Params Object
+        let params = new HttpParams();
+
+        if(stringCartas1 == 'null'){
+            alert("stringCartas1 es null");
+        }
+
+        if(stringCartas2 == 'null'){
+            alert("stringCartas2 es null");
+        }
+
+        // Begin assigning parameters
+        params = params.append('match_id', match_id);
+        params = params.append('stringCartas1', stringCartas1);
+        params = params.append('stringCartas2', stringCartas2);
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+        
+        return this._http.post(this.url + 'updateCartasJugada', params, {headers: headers});
+    }
+
+    updatePuntuacion(match_id, puntuacionNueva1, puntuacionNueva2): Observable<any>{
+
+        // Initialize Params Object
+    let params = new HttpParams();
+
+    // Begin assigning parameters
+    params = params.append('match_id', match_id);
+    params = params.append('puntuacionNueva1', puntuacionNueva1);
+    params = params.append('puntuacionNueva2', puntuacionNueva2);
+
+    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    
+    return this._http.post(this.url + 'updatePuntuacion', params, {headers: headers});
+}
 }

@@ -293,4 +293,84 @@ class UserController extends Controller
             'status' => 'success'
         ), 200);
     }
+
+    public function updateMatchCards1(Request $request){
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods, Authorization, X-Requested-With');
+
+        $match_id = (int)$request['match_id'];
+        $stringCartas = $request['stringCartas'];
+        
+        $match_update = Match::find($match_id);
+
+        $match_update->cartasPlayer1 = $stringCartas;
+
+        $match_update->save();
+
+        return response()->json(array(
+            'status' => 'success',
+            'message' => 'Cartas actualizadas'
+        ), 200);
+    }
+
+    public function updateMatchCards2(Request $request){
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods, Authorization, X-Requested-With');
+
+        $match_id = (int)$request['match_id'];
+        $stringCartas = $request['stringCartas'];
+        
+        $match_update = Match::find($match_id);
+
+        $match_update->cartasPlayer2 = $stringCartas;
+
+        $match_update->save();
+
+        return response()->json(array(
+            'status' => 'success',
+            'message' => 'Cartas actualizadas'
+        ), 200);
+    }
+
+    public function updateCartasJugada(Request $request){
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods, Authorization, X-Requested-With');
+
+        $match_id = (int)$request['match_id'];
+        $stringCartas1 = $request['stringCartas1'];
+        $stringCartas2 = $request['stringCartas2'];
+
+        $match_update = Match::find($match_id);
+
+        $match_update->cartasPlayer1 = $stringCartas1;
+        $match_update->cartasPlayer2 = $stringCartas2;
+
+        $match_update->save();
+
+        return response()->json(array(
+            'status' => 'success',
+            'message' => 'Cartas actualizadas'
+        ), 200);
+    }
+
+    public function updatePuntuacion(Request $request){
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods, Authorization, X-Requested-With');
+
+        $match_id = (int)$request['match_id'];
+        $nuevaPuntuacion1 = $request['nuevaPuntuacion1'];
+        $nuevaPuntuacion2 = $request['nuevaPuntuacion2'];
+
+        $match_update = Match::find($match_id);
+
+        $match_update->cartasPlayer1 = $nuevaPuntuacion1;
+        $match_update->cartasPlayer2 = $nuevaPuntuacion2;
+
+        $match_update->save();
+
+        return response()->json(array(
+            'status' => 'success',
+            'message' => 'Cartas actualizadas'
+        ), 200);
+    }
 }

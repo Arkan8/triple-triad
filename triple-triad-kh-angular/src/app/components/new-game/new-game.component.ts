@@ -146,81 +146,36 @@ export class NewGameComponent implements OnInit {
     
     
     aceptar(){
-      var id = this.identity.sub;
-      
-
-      //Cinco cartas random del jugador 1
-      
-      this._cardService.getFiveRandomCards(this.retadorId).subscribe(
+      this.match.player1 = this.retadorId;
+      this.match.player2 = this.identity.sub
+      this.match.player1Name = this.elRetador;
+      this.match.player2Name = this.identity.username;
+      this.match.puntuacionPlayer1 = 5;
+      this.match.puntuacionPlayer2 = 5;
+      this.match.cartasPlayer1 = "";
+      this.match.cartasPlayer2 = "";
+  
+      this._userService.createGame(this.match).subscribe(
         (response) => {
-          if (response.status == 'success') {
-            this.fiveCards1 = response.fiveCards;
-            
-            for (let i = 0; i < this.fiveCards1.length; i++) {
-              this.cartas1.push(this.fiveCards1[i].img_aliado);
-            }
-            this.cartas1String = this.cartas1.toString();
-
-            //Cinco cartas random del jugador 2
-            this._cardService.getFiveRandomCards(id).subscribe(
+          if(response.status == 'success'){
+            this._router.navigate(['/match', response.id]);
+            this._userService.deleteDuel(this.identity.username).subscribe(
               (response) => {
                 if (response.status == 'success') {
-                  this.fiveCards2 = response.fiveCards;
-                  
-                  for (let i = 0; i < this.fiveCards2.length; i++) {
-                    this.cartas2.push(this.fiveCards2[i].img_rival);
-                  }
-                  this.cartas2String = this.cartas2.toString();
-
-                  //CREAR PARTIDA-----------------------------------------
-
-                  this.match.player1 = this.retadorId;
-                  this.match.player2 = this.identity.sub
-                  this.match.player1Name = this.elRetador;
-                  this.match.player2Name = this.identity.username;
-                  this.match.puntuacionPlayer1 = 5;
-                  this.match.puntuacionPlayer2 = 5;
-                  this.match.cartasPlayer1 = this.cartas1String;
-                  this.match.cartasPlayer2 = this.cartas2String;
-
-    
-                  console.log(this.match);
-              
-                  this._userService.createGame(this.match).subscribe(
-                    (response) => {
-                      if(response.status == 'success'){
-                        this._router.navigate(['/match', response.id]);
-                        this._userService.deleteDuel(this.identity.username).subscribe(
-                          (response) => {
-                            if (response.status == 'success') {
-                              //Se ha eliminado el duelo pendiente
-                            }
-                          },
-                          (error) => {
-                            console.log(error);
-                          }
-                          );
-
-                      }
-                    },
-                    (error) => {
-                      console.log(error)
-                    }
-                  );
-
+                  //Se ha eliminado el duelo pendiente
                 }
               },
               (error) => {
                 console.log(error);
               }
               );
+
           }
         },
         (error) => {
-          console.log(error);
+          console.log(error)
         }
-        );
-
+      );
     }
     
     rechazar(){

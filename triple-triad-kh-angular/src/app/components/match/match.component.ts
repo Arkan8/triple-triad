@@ -8,9 +8,6 @@ import { Board } from 'src/app/models/board';
 import { Card } from 'src/app/models/card';
 import { HttpClient } from '@angular/common/http';
 
-
-
-
 @Component({
   selector: 'app-match',
   templateUrl: './match.component.html',
@@ -39,8 +36,8 @@ export class MatchComponent implements OnInit {
   public grid7;
   public grid8;
   public grid9;
-  public puntuacion1 = 5;
-  public puntuacion2 = 5;
+  public puntuacion1;
+  public puntuacion2;
   public contiene = true;
   public comparador1 = [];
   public comparador2 = [];
@@ -74,6 +71,8 @@ export class MatchComponent implements OnInit {
         (response) => {
           if(response.status == 'success'){
             this.match = response.match;
+            this.puntuacion1 = this.match.puntuacionPlayer1;
+            this.puntuacion2 = this.match.puntuacionPlayer2;
           
           this._userService.getBoard(this.match_id).subscribe(
             (response) => {
@@ -118,78 +117,72 @@ export class MatchComponent implements OnInit {
             }
             )
             
-            //CARTAS PLAYER           
-            
-            if (this.cartasMano2 == null || this.cartasMano2 == 'undefined' || this.cartasMano2 == '' || this.cartasMano2 == []) {
-              this.asignarCartas1();
-          } else{
-            this.cartasMano1 = localStorage.getItem('cartas1');
-            this.cartasMano2 = localStorage.getItem('cartas2');
-            
-            
-            if (this.cartasMano1 != 'undefined') {
-              this.cartas1 = JSON.parse(this.cartasMano1);
-              this.match.cartasPlayer1 = '';
-              this.cartas1.forEach(element => {
-                this.match.cartasPlayer1 += element.img_aliado;
-              });
-            }
-            if (this.cartasMano2 != 'undefined') {
-              this.cartas2 = JSON.parse(this.cartasMano2);
-              this.match.cartasPlayer2 = '';
-              this.cartas2.forEach(element => {
-                this.match.cartasPlayer2 += element.img_rival;
-              });
-            }
-          }
+            if (this.identity.sub == this.match.player1) {
+              if (this.match.cartasPlayer1 == "" || this.match.cartasPlayer1 == null) {
+                this.asignarCartas1();
+                localStorage.setItem('cartas1', this.match.cartasPlayer1);
+              } else{
+                this.cartas1 = JSON.parse(this.match.cartasPlayer1);
+                this.cartas2 = JSON.parse(this.match.cartasPlayer2);
 
-          if (this.cartasMano1 == null || this.cartasMano1 == 'undefined' || this.cartasMano1 == '' || this.cartasMano1 == []) {
-            this.asignarCartas2();
-          } else{
-            this.cartasMano1 = localStorage.getItem('cartas1');
-            this.cartasMano2 = localStorage.getItem('cartas2');
-      
-            if (this.cartasMano1 != 'undefined') {
-              this.cartas1 = JSON.parse(this.cartasMano1);
-              this.match.cartasPlayer1 = '';
-              this.cartas1.forEach(element => {
-                this.match.cartasPlayer1 += element.img_aliado;
-              });
+                this.cartas1.forEach(carta => {
+                  this.comparador1.push(carta.nombre);
+                });
+                
+                if (this.cartas2 == null) {
+                  //
+                } else{
+                  this.cartas2.forEach(carta => {
+                    this.comparador2.push(carta.nombre);
+                  });
+                }
+                
+                while (this.comparador1.some(v => this.comparador2.includes(v))) {
+                  this.asignarCartas1();
+                  localStorage.setItem('cartas1', this.match.cartasPlayer1);
+                  
+                  this.comparador1 = [];
+                  
+                  this.cartas1.forEach(carta => {
+                    this.comparador1.push(carta.nombre);
+                  });
+                  break;
+                }
+
+              }
+            } else if(this.identity.sub == this.match.player2){
+              if (this.match.cartasPlayer2 == "" || this.match.cartasPlayer2 == null) {
+                this.asignarCartas2();
+                localStorage.setItem('cartas2', this.match.cartasPlayer2);
+              } else{
+                this.cartas1 = JSON.parse(this.match.cartasPlayer1);
+                this.cartas2 = JSON.parse(this.match.cartasPlayer2);
+
+                this.cartas2.forEach(carta => {
+                  this.comparador2.push(carta.nombre);
+                });
+
+                if (this.cartas1 == null) {
+                  //
+                } else{
+                  this.cartas1.forEach(carta => {
+                    this.comparador1.push(carta.nombre);
+                  });
+                }
+
+                while (this.comparador2.some(v => this.comparador1.includes(v))) {
+                  this.asignarCartas2();
+                  localStorage.setItem('cartas2', this.match.cartasPlayer2);
+
+                  this.comparador2 = [];
+
+                  this.cartas2.forEach(carta => {
+                    this.comparador2.push(carta.nombre);
+                  });
+                  break;
+                }
+              }
             }
-            if (this.cartasMano2 != 'undefined') {
-              this.cartas2 = JSON.parse(this.cartasMano2);
-              this.match.cartasPlayer2 = '';
-              this.cartas2.forEach(element => {
-                this.match.cartasPlayer2 += element.img_rival;
-              });
-            }
-          }
-          
-          if (this.cartas1 == 'undefined') {
-            
-          } else {
-            this.cartas1.forEach(carta => {
-              this.comparador1.push(carta.nombre);
-            });
-          }
-          
-          if (this.cartas2 == 'undefined') {
-            
-          } else {
-            this.cartas2.forEach(carta => {
-              this.comparador2.push(carta.nombre);
-            });
-          }
-
-          while (this.comparador1.some(v => this.comparador2.includes(v))) {
-            this.asignarCartas2();
-
-            this.comparador2 = [];
-
-            this.cartas2.forEach(carta => {
-              this.comparador2.push(carta.nombre);
-            });
-          }
       }
       
       },
@@ -207,6 +200,11 @@ export class MatchComponent implements OnInit {
       (response) => {
         this.cartas1 = response.fiveCards;
         localStorage.setItem('cartas1', JSON.stringify(this.cartas1));
+        this._userService.updateMatchCards1(this.match_id, JSON.stringify(this.cartas1)).subscribe(
+          (response) => {
+
+          }
+        )
 
       },
       (error) => {
@@ -219,7 +217,13 @@ export class MatchComponent implements OnInit {
     this._cardService.getMatchCards(this.match.player2).subscribe(
       (response) => {
         this.cartas2 = response.fiveCards;
+        console.log(this.cartas2);
         localStorage.setItem('cartas2', JSON.stringify(this.cartas2));
+        this._userService.updateMatchCards2(this.match_id, JSON.stringify(this.cartas2)).subscribe(
+          (response) => {
+
+          }
+        )
 
       },
       (error) => {
@@ -270,8 +274,7 @@ export class MatchComponent implements OnInit {
                 this.valor_izquierda_cartaSeleccionada = $("input[name='cartaSeleccionada']:checked").next().next().next().next().next().text();
                 this.valor_derecha_cartaSeleccionada = $("input[name='cartaSeleccionada']:checked").next().next().next().next().next().next().text();
 
-                //GRID 1
-                if (grid == 'grid1'){
+                if (grid == 'grid1'){ //GRID 1 ---------------------------------------------------------------------------
                   if(this.grid2 == null){
                   } else{
                     if (this.valor_derecha_cartaSeleccionada > this.grid2.valor_izquierda) {
@@ -467,8 +470,11 @@ export class MatchComponent implements OnInit {
           }
       }
 
-      localStorage.setItem('cartas1', JSON.stringify(this.cartas1));
-      localStorage.setItem('cartas2', JSON.stringify(this.cartas2));
+      this._userService.updateCartasJugada(this.match_id, JSON.stringify(this.cartas1), JSON.stringify(this.cartas2)).subscribe(
+        (response) => {
+          localStorage.setItem('cartas1', this.match.cartasPlayer1);
+        }
+      )
     
     } else if(this.identity.sub == this.match.player2){
       //JUGADOR 2
@@ -485,8 +491,11 @@ export class MatchComponent implements OnInit {
           }
       }
 
-      localStorage.setItem('cartas1', JSON.stringify(this.cartas1));
-      localStorage.setItem('cartas2', JSON.stringify(this.cartas2));
+      this._userService.updateCartasJugada(this.match_id, JSON.stringify(this.cartas1), JSON.stringify(this.cartas2)).subscribe(
+        (response) => {
+          localStorage.setItem('cartas2', this.match.cartasPlayer2);
+        }
+      )
 
     }
   }
