@@ -48,7 +48,7 @@ class UserController extends Controller
 
                 //Asignamos las cartas iniciales para los usuarios recién creados
                 //Necesitamos crear para ello unos números aleatorios para asignar 4 cartas de nivel 1 y una de nivel 2
-                $arrayRandom = [rand(1,11), rand(1,11), rand(1,11), rand(1,11), rand(12,22), rand(1,11), rand(1,11), rand(23,33), rand(23,33), rand(34,44), rand(34,44), rand(23,33), rand(45,55), rand(45,55), rand(34,44)];
+                $arrayRandom = [rand(1,11), rand(1,11), rand(1,11), rand(1,11), rand(1,11), rand(1,11), rand(1,11), rand(1,11), rand(1,11), rand(1,11), rand(12,22), rand(12,22), rand(12,22), rand(12,22), rand(12,22), rand(12,22), rand(12,22), rand(12,22), rand(12,22), rand(12,22), rand(23,33), rand(23,33), rand(23,33), rand(23,33), rand(23,33), rand(23,33), rand(23,33), rand(23,33), rand(23,33), rand(23,33), rand(34,44), rand(34,44), rand(34,44), rand(34,44), rand(34,44), rand(34,44), rand(34,44), rand(34,44), rand(34,44), rand(34,44)];
 
                 $cards = Card::find($arrayRandom);
                 /* $user->cards()->attach($cards); */
@@ -358,19 +358,19 @@ class UserController extends Controller
         header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods, Authorization, X-Requested-With');
 
         $match_id = (int)$request['match_id'];
-        $nuevaPuntuacion1 = $request['nuevaPuntuacion1'];
-        $nuevaPuntuacion2 = $request['nuevaPuntuacion2'];
+        $nuevaPuntuacion1 = (int)$request['puntuacionNueva1'];
+        $nuevaPuntuacion2 = (int)$request['puntuacionNueva2'];
 
         $match_update = Match::find($match_id);
 
-        $match_update->cartasPlayer1 = $nuevaPuntuacion1;
-        $match_update->cartasPlayer2 = $nuevaPuntuacion2;
+        $match_update->puntuacionPlayer1 = $nuevaPuntuacion1;
+        $match_update->puntuacionPlayer2 = $nuevaPuntuacion2;
 
         $match_update->save();
 
         return response()->json(array(
             'status' => 'success',
-            'message' => 'Cartas actualizadas'
+            'message' => 'Puntuación actualizadas'
         ), 200);
     }
 }
