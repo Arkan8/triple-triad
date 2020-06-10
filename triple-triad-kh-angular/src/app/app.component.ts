@@ -1,5 +1,6 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
 import { UserService } from './services/user.service';
+import { User } from './models/user';
 
 
 @Component({
@@ -11,6 +12,7 @@ import { UserService } from './services/user.service';
 export class AppComponent implements OnInit, DoCheck {
   public identity;
   public token;
+  public user: User;
   public allDuels: Array<any>;
   public retadores: Array<any>;
   public retados: Array<any>;
@@ -23,6 +25,11 @@ export class AppComponent implements OnInit, DoCheck {
   }
 
   ngOnInit(){
+    this._userService.userNewPoints(this.identity.sub).subscribe(
+      (response) => {
+        this.user = response.user;
+      }
+    )
   }
 
   ngDoCheck(){

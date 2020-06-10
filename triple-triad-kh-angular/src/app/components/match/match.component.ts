@@ -72,6 +72,9 @@ export class MatchComponent implements OnInit {
         (response) => {
           if(response.status == 'success'){
             this.match = response.match;
+            if (!this.match) {
+              this._router.navigate(['/']);
+            }
             this.puntuacion1 = this.match.puntuacionPlayer1;
             this.puntuacion2 = this.match.puntuacionPlayer2;
           
@@ -121,17 +124,98 @@ export class MatchComponent implements OnInit {
               if (JSON.parse(this.match.cartasPlayer1).length > JSON.parse(this.match.cartasPlayer2).length) {
                 if (this.identity.sub == this.match.player1) {
                   alert("Has ganado la partida, recibirás 100 Soles por tu victoria");
+                  if (this.board) {
+                    this._userService.deleteBoard(this.match_id).subscribe(
+                      (response) => {
+                        this._userService.deleteMatch(this.match_id).subscribe(
+                          (response) => {
+                            this._userService.addPoints(100, this.match.player1).subscribe(
+                              (response) =>{
+                                
+                              }
+                            )
+                          }
+                        )
+                      }
+                    )
+                  } else{
+                    this._router.navigate(['/']);
+                  }
                 } else if(this.identity.sub == this.match.player2){
                   alert("Has perdido la partida, más suerte la próxima vez");
+                  if (this.board) {
+                    this._userService.deleteBoard(this.match_id).subscribe(
+                      (response) => {
+                        this._userService.deleteMatch(this.match_id).subscribe(
+                          (response) => {
+                            this._router.navigate(['/']);
+                          }
+                        )
+                      }
+                    )
+                  } else{
+                    this._router.navigate(['/']);
+                  }
                 }
               } else if(JSON.parse(this.match.cartasPlayer2).length > JSON.parse(this.match.cartasPlayer1).length){
                 if (this.identity.sub == this.match.player1) {
                   alert("Has perdido la partida, más suerte la próxima vez");
+                  if (this.board) {
+                    this._userService.deleteBoard(this.match_id).subscribe(
+                      (response) => {
+                        this._userService.deleteMatch(this.match_id).subscribe(
+                          (response) => {
+                            this._router.navigate(['/']);
+                          }
+                        )
+                      }
+                    )
+                  } else{
+                    this._router.navigate(['/']);
+                  }
                 } else if(this.identity.sub == this.match.player2){
                   alert("Has ganado la partida, recibirás 100 Soles por tu victoria");
+                  if (this.board) {
+                    this._userService.deleteBoard(this.match_id).subscribe(
+                      (response) => {
+                        this._userService.deleteMatch(this.match_id).subscribe(
+                          (response) => {
+                            this._userService.addPoints(100, this.match.player2).subscribe(
+                              (response) =>{
+                                
+                              }
+                            )
+                          }
+                        )
+                      }
+                    )
+                  } else{
+                    this._router.navigate(['/']);
+                  }
                 }
               } else if(JSON.parse(this.match.cartasPlayer2).length == JSON.parse(this.match.cartasPlayer1).length){
                 alert("La partida ha acabado en empate, recibiras 30 Soles");
+                if (this.board) {
+                  this._userService.deleteBoard(this.match_id).subscribe(
+                    (response) => {
+                      this._userService.deleteMatch(this.match_id).subscribe(
+                        (response) => {
+                          this._userService.addPoints(30, this.match.player1).subscribe(
+                            (response) =>{
+                              this._userService.addPoints(30, this.match.player2).subscribe(
+                                (response) =>{
+                                  
+                                }
+                              )
+                            }
+                          )
+                        }
+                      )
+                    }
+                  )
+                } else{
+                  this._router.navigate(['/']);
+                }
               }
             }
             },

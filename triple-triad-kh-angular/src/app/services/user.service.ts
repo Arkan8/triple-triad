@@ -205,15 +205,68 @@ export class UserService{
     updatePuntuacion(match_id, puntuacionNueva1, puntuacionNueva2): Observable<any>{
 
         // Initialize Params Object
-    let params = new HttpParams();
+        let params = new HttpParams();
 
-    // Begin assigning parameters
-    params = params.append('match_id', match_id);
-    params = params.append('puntuacionNueva1', puntuacionNueva1);
-    params = params.append('puntuacionNueva2', puntuacionNueva2);
+        // Begin assigning parameters
+        params = params.append('match_id', match_id);
+        params = params.append('puntuacionNueva1', puntuacionNueva1);
+        params = params.append('puntuacionNueva2', puntuacionNueva2);
 
-    let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
-    
-    return this._http.post(this.url + 'updatePuntuacion', params, {headers: headers});
-}
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+        
+        return this._http.post(this.url + 'updatePuntuacion', params, {headers: headers});
+    }
+
+    deleteBoard(match_id): Observable<any>{
+
+        // Initialize Params Object
+        let params = new HttpParams();
+
+        // Begin assigning parameters
+        params = params.append('match_id', match_id);
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+        
+        return this._http.post(this.url + 'deleteBoard', params, {headers: headers});
+    }
+
+    deleteMatch(match_id): Observable<any>{
+
+        // Initialize Params Object
+        let params = new HttpParams();
+
+        // Begin assigning parameters
+        params = params.append('match_id', match_id);
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+        
+        return this._http.post(this.url + 'deleteMatch', params, {headers: headers});
+    }
+
+    addPoints(puntos, user): Observable<any>{
+
+        // Initialize Params Object
+        let params = new HttpParams();
+
+        // Begin assigning parameters
+        params = params.append('puntos', puntos);
+        params = params.append('user', user);
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+        
+        return this._http.post(this.url + 'addPoints', params, {headers: headers});
+    }
+
+    userNewPoints(user_id): Observable<any>{
+
+        // Initialize Params Object
+        let params = new HttpParams();
+
+        // Begin assigning parameters
+        params = params.append('user_id', user_id);
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+        
+        return this._http.post(this.url + 'userNewPoints', params, {headers: headers});
+    }
 }

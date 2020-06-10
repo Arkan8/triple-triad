@@ -172,19 +172,8 @@ class UserController extends Controller
         $json = $request->input('json', null);
         $params = json_decode($json);
 
-        //$inputJSON = file_get_contents('php://input');
-        //$params = json_decode( $inputJSON, false );
-        //$array = json_decode(json_encode($params), true);
-        
-        //$retadoName = $array['retadoName'];
         $retadoName = $params;
-        
-        /* $duel = new Duel();
-        
-        $duel->retador = $params->retador;
-        $duel->retado = $params->retado;
-        $duel->retadorName = $params->retadorName;
-        $duel->retadoName = $params->retadoName; */
+
         
         $duel = Duel::where('retadoName', $retadoName);    
         $duel->delete();
@@ -370,7 +359,72 @@ class UserController extends Controller
 
         return response()->json(array(
             'status' => 'success',
-            'message' => 'Puntuación actualizadas'
+            'message' => 'Puntuación actualizada'
+        ), 200);
+    }
+
+    public function deleteBoard(Request $request){
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods, Authorization, X-Requested-With');
+
+        $match_id = (int)$request['match_id'];
+
+        $board = Board::where('match_id', $match_id);
+        $board->delete();
+
+        return response()->json(array(
+            'status' => 'success',
+            'message' => 'Tablero eliminado correctamente'
+        ), 200);
+    }
+
+    public function deleteMatch(Request $request){
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods, Authorization, X-Requested-With');
+
+        $match_id = (int)$request['match_id'];
+
+        $match = Match::find($match_id);
+        $match->delete();
+
+        return response()->json(array(
+            'status' => 'success',
+            'message' => 'Partida eliminada correctamente'
+        ), 200);
+    }
+
+    public function addPoints(Request $request){
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods, Authorization, X-Requested-With');
+
+        $puntos = (int)$request['puntos'];
+        $user = (int)$request['user'];
+
+        $user = User::find($user);
+
+        $puntos_actuales = $user->puntos;
+
+        $user->puntos = $puntos_actuales + $puntos;
+
+        $user->save();
+
+        return response()->json(array(
+            'status' => 'success',
+            'message' => 'Puntuación actualizada'
+        ), 200);
+    }
+
+    public function userNewPoints(Request $request){
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods, Authorization, X-Requested-With');
+
+        $user_id = (int)$request['user_id'];
+
+        $user = User::find($user_id);
+
+        return response()->json(array(
+            'user' => $user,
+            'status' => 'success',
         ), 200);
     }
 }
