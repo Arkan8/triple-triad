@@ -37,6 +37,8 @@ Route::post('/updateMatchCards2', 'UserController@updateMatchCards2');
 Route::post('/deleteBoard', 'UserController@deleteBoard');
 Route::post('/deleteMatch', 'UserController@deleteMatch');
 Route::post('/addPoints', 'UserController@addPoints');
+Route::post('/removePoints', 'UserController@removePoints');
+Route::post('/comprarPack', 'UserController@comprarPack');
 Route::post('/userNewPoints', 'UserController@userNewPoints');
 Route::post('/updatePuntuacion', 'UserController@updatePuntuacion');
 Route::post('/updateCartasJugada', 'UserController@updateCartasJugada');

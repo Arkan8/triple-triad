@@ -10,6 +10,7 @@ import { ReglasComponent } from './components/reglas/reglas.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { NewGameComponent } from './components/new-game/new-game.component';
 import { MatchComponent } from './components/match/match.component';
+import { TiendaComponent } from './components/tienda/tienda.component';
 
 const appRoutes: Routes = [
     {path: '', component: InicioComponent},
@@ -19,6 +20,7 @@ const appRoutes: Routes = [
     {path: 'logout/:sure', component: LoginComponent},
     {path: 'cartas', component: CardShowComponent},
     {path: 'reglas', component: ReglasComponent},
+    {path: 'tienda', component: TiendaComponent},
     {path: 'match/:id', component: MatchComponent},
     {path: 'new-game', component: NewGameComponent},
     {path: '**', component: InicioComponent}

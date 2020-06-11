@@ -269,4 +269,32 @@ export class UserService{
         
         return this._http.post(this.url + 'userNewPoints', params, {headers: headers});
     }
+
+    comprarPack(packComprado, user_id): Observable<any>{
+
+        // Initialize Params Object
+        let params = new HttpParams();
+
+        // Begin assigning parameters
+        params = params.append('user_id', user_id);
+        params = params.append('packComprado', packComprado);
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+        
+        return this._http.post(this.url + 'comprarPack', params, {headers: headers});
+    }
+
+    removePoints(restarPuntos, user_id): Observable<any>{
+
+        // Initialize Params Object
+        let params = new HttpParams();
+
+        // Begin assigning parameters
+        params = params.append('user_id', user_id);
+        params = params.append('restarPuntos', restarPuntos);
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+        
+        return this._http.post(this.url + 'removePoints', params, {headers: headers});
+    }
 }

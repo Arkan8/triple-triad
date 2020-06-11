@@ -19,7 +19,7 @@ export class CardShowComponent implements OnInit {
   public card: Card;
   public card_user: Card_User;
   public cards: Array<Card>;
-  public cardUserArray: Array<Card_User>;
+  public cardUserArray: Array<Card> = [];
   public nivel1: string;
   public nivel2: string;
   public nivel3: string;
@@ -53,9 +53,11 @@ export class CardShowComponent implements OnInit {
     this.nivel9 = 'Cartas de nivel 9';
     this.nivel10 = 'Cartas de nivel 10';
     this.tusCartas = 'Tus cartas';
+
   }
 
   ngOnInit(): void {
+    
     if (this.identity == null) {
       this._router.navigate(['/login']);
     } else {
@@ -69,26 +71,22 @@ export class CardShowComponent implements OnInit {
         (error) => {
           console.log(error);
         }
-      );
-    }
-
-    //Obtener cartas del usuario
-    
-    var id = this.identity.sub;
-    
-    this._cardService.getUserCards(id).subscribe(
-      (response) => {
-        if (response.status == 'success') {
-          this.cardUserArray = response.cardsUser;
-        }
-      },
-      (error) => {
-        console.log(error);
+        );
       }
-    );
 
-
-
-
+      //Obtener cartas del usuario
+      
+      var id = this.identity.sub;
+      
+      this._cardService.getUserCards(id).subscribe(
+        (response) => {
+          this.cardUserArray = response.cardsUser;
+          
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
+      
+    }
   }
-}

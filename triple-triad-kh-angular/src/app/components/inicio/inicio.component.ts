@@ -17,6 +17,7 @@ export class InicioComponent implements OnInit {
   public title: string;
   public identity;    
   public token;
+  public user: User;
   public allDuels: Array<any>;
   public retadores: Array<any> = [];
   public retados: Array<any> = [];

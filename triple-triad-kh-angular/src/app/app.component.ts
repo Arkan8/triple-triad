@@ -22,14 +22,17 @@ export class AppComponent implements OnInit, DoCheck {
   ){
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
+    this.user = new User(1, '', '', '', 100);
   }
 
   ngOnInit(){
-    this._userService.userNewPoints(this.identity.sub).subscribe(
-      (response) => {
-        this.user = response.user;
-      }
-    )
+    if (this.identity) {
+      this._userService.userNewPoints(this.identity.sub).subscribe(
+        (response) => {
+          this.user = response.user;
+        }
+      )
+    }
   }
 
   ngDoCheck(){

@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
         private _userService: UserService
     ){
         this.title = 'Registrar';
-        this.user = new User(1, '', '', '');
+        this.user = new User(1, '', '', '', 100);
     }
 
     ngOnInit(){
@@ -33,7 +33,7 @@ export class RegisterComponent implements OnInit {
                     this.status = response.status;
 
                     //vaciar form
-                    this.user = new User(1, '', '', '');
+                    this.user = new User(1, '', '', '', 100);
                     form.reset;
                 } else{
                     this.status = 'error';

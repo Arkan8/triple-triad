@@ -1,0 +1,634 @@
+html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background-color: #17181c;
+    margin: 40px;
+}
+
+.fondo {
+    background-color: #17181c;
+    align-content: center;
+}
+
+.card {
+    background-color: #17181c;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600);
+
+/*** Shadows ***/
+
+
+/*** Follow ***/
+
+a.follow {
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 10px;
+    color: #fff !important;
+    z-index: 9999;
+    font-family: 'Helvetica';
+    font-size: 11px;
+    text-transform: uppercase;
+    text-decoration: none;
+    opacity: .5;
+}
+
+a.follow svg {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+a.follow span {
+    display: none;
+}
+
+a.follow:hover {
+    opacity: 1;
+}
+
+a.follow:hover span {
+    display: inline;
+}
+
+body {
+    font-family: 'Open Sans', arial;
+}
+
+html,
+body {
+    min-height: 100%;
+    height: 100%;
+    background: #f4f4f4;
+}
+
+.demo-container {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+.demo-container-inner {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.contents {
+    width: 80%;
+    margin: auto;
+}
+
+.s10 {
+    height: 10px;
+}
+
+h1 {
+    margin-bottom: 40px;
+    font-weight: 300;
+    color: #999;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.flipable {
+    -webkit-perspective: 80;
+    perspective: 80;
+    position: relative;
+    display: inline-block;
+}
+
+.flipable .flipable-group {
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    -webkit-transform-origin: center;
+    transform-origin: center;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.flipable .flipable-group>*:nth-child(1),
+.flipable .flipable-group>*:nth-child(2) {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    z-index: 2;
+    top: 0;
+    left: 0;
+}
+
+.flipable .flipable-group>*:nth-child(1) {
+    position: relative;
+    z-index: 1;
+}
+
+.flipable .flipable-group>*:nth-child(2) {
+    -webkit-transform: rotatex(180deg);
+    transform: rotatex(180deg);
+    position: absolute;
+}
+
+.flipable.flipped .flipable-group {
+    -webkit-transform: rotatex(180deg);
+    transform: rotatex(180deg);
+}
+
+.flipable.flipped .flipable-group>*:nth-child(1) {
+    pointer-events: none;
+}
+
+.flipable.flipped .flipable-group>*:nth-child(2) {
+    z-index: 10;
+}
+
+.form-control {
+    border-color: #000;
+    border-width: 0 0 1px 0;
+    border-radius: 0;
+    background: transparent;
+    color: #000;
+    padding: .375rem 0;
+}
+
+.form-control:focus {
+    border-color: #000;
+    outline: 0;
+}
+
+.btn:focus,
+.btn:active {
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+
+.card {
+    border-color: #ccc;
+    text-align: center;
+}
+
+.card .card-title {
+    color: #fc5830;
+}
+
+.card-title {
+    text-align: center;
+}
+
+.card-text {
+    text-align: center;
+    color: white;
+}
+
+.cart-price {
+    font-size: 1.5rem;
+}
+
+.add-to-cart span,
+.remove-from-cart span {
+    pointer-events: none;
+}
+
+.add-to-cart {
+    background-color: #fc5830;
+    border-color: #fc5830;
+    text-align: center;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+    margin: 20px;
+}
+
+.add-to-cart:hover,
+.add-to-cart:active,
+.add-to-cart:focus,
+.add-to-cart:active:focus {
+    background-color: #fc4417;
+    border-color: #fc4417;
+}
+
+.remove-from-cart {
+    background-color: #0da58e;
+    border-color: #0da58e;
+}
+
+.remove-from-cart:hover,
+.remove-from-cart:active,
+.remove-from-cart:focus,
+.remove-from-cart:active:focus {
+    background-color: #ed1c24;
+    border-color: #ed1c24;
+}
+
+.checkout-form {
+    color: white;
+    padding: 20px;
+    z-index: 998;
+    top: 50px;
+    right: 10px;
+    background-color: #fff;
+    -webkit-transition: right 0.5s;
+    transition: right 0.5s;
+    position: absolute;
+    width: 390px;
+    color: white;
+    -webkit-clip-path: inset(0 0 100% 0);
+    clip-path: inset(0 0 100% 0);
+    -webkit-transition: -webkit-clip-path 0.2s;
+    transition: -webkit-clip-path 0.2s;
+    transition: clip-path 0.2s;
+    transition: clip-path 0.2s, -webkit-clip-path 0.2s;
+    border-radius: 0 0 3px 3px;
+}
+
+.btn-submit {
+    background-color: #0da58e;
+}
+
+.btn-checkout {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 10px;
+    right: -60px;
+    z-index: 999;
+    background-color: #0da58e;
+    border-radius: 3px;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.btn-checkout>.cart-icon {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+}
+
+.btn-checkout span:nth-child(2) {
+    position: absolute;
+    left: 0;
+    line-height: 50px;
+    color: white;
+    width: 390px;
+    text-align: center;
+    font-weight: 300;
+    text-transform: uppercase;
+}
+
+.btn-checkout>.close-cart-icon {
+    display: none;
+}
+
+.btn-checkout:hover {
+    width: 390px;
+}
+
+.enable-checkout .btn-checkout {
+    right: 10px;
+}
+
+.overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: black;
+    z-index: 989;
+    opacity: 0;
+    -webkit-transition: opacity 0.2s;
+    transition: opacity 0.2s;
+    pointer-events: none;
+}
+
+.card-wrapper {
+    opacity: 0;
+    -webkit-transition: opacity .1s;
+    transition: opacity .1s;
+}
+
+body.open-checkout .overlay {
+    opacity: .8;
+    pointer-events: initial;
+}
+
+body.open-checkout .btn-checkout {
+    width: 390px;
+    border-radius: 3px 3px 0 0;
+}
+
+body.open-checkout .checkout-form {
+    -webkit-clip-path: inset(0 0 0% 0);
+    clip-path: inset(0 0 0% 0);
+}
+
+body.open-checkout .checkout-form .card-wrapper {
+    opacity: 1;
+}
+
+.jp-card-logo.jp-card-amex {
+    text-transform: uppercase;
+    font-size: 4px;
+    font-weight: bold;
+    color: white;
+    background-image: repeating-radial-gradient(circle at center, #FFF 1px, #999 2px);
+    border: 1px solid #EEE;
+}
+
+.jp-card-logo.jp-card-amex:before {
+    height: 28px;
+    content: "american";
+    top: 3px;
+    text-align: left;
+    padding-left: 2px;
+    padding-top: 11px;
+    background: #267AC3;
+}
+
+.jp-card-logo.jp-card-amex:after {
+    content: "express";
+    bottom: 11px;
+    text-align: right;
+    padding-right: 2px;
+}
+
+.jp-card.jp-card-amex.jp-card-identified .jp-card-front:before,
+.jp-card.jp-card-amex.jp-card-identified .jp-card-back:before {
+    background-color: #108168;
+}
+
+.jp-card-logo.jp-card-discover {
+    background: #FF6600;
+    color: #111;
+    text-transform: uppercase;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 10px;
+    text-align: center;
+    overflow: hidden;
+    z-index: 1;
+    padding-top: 9px;
+    letter-spacing: .03em;
+    border: 1px solid #EEE;
+}
+
+.jp-card-logo.jp-card-discover:before {
+    background: white;
+    width: 200px;
+    height: 200px;
+    border-radius: 200px;
+    bottom: -5%;
+    right: -80%;
+    z-index: -1;
+}
+
+.jp-card-logo.jp-card-discover:after {
+    width: 8px;
+    height: 8px;
+    border-radius: 4px;
+    top: 10px;
+    left: 27px;
+    background-color: #FF6600;
+    background-image: radial-gradient(#FF6600, #fff);
+    content: "network";
+    font-size: 4px;
+    line-height: 24px;
+    text-indent: -7px;
+}
+
+.jp-card.jp-card-discover.jp-card-identified .jp-card-front:before,
+.jp-card.jp-card-discover.jp-card-identified .jp-card-back:before {
+    background-color: #86B8CF;
+}
+
+.jp-card.jp-card-discover.jp-card-identified .jp-card-front:after {
+    -webkit-transition: 400ms;
+    transition: 400ms;
+    content: " ";
+    display: block;
+    background-color: #FF6600;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#FF6600), color-stop(#ffa366), to(#FF6600));
+    background-image: linear-gradient(#FF6600, #ffa366, #FF6600);
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+    position: absolute;
+    left: 100%;
+    top: 15%;
+    margin-left: -25px;
+    box-shadow: inset 1px 1px 3px 1px rgba(0, 0, 0, 0.5);
+}
+
+.jp-card-logo.jp-card-visa {
+    background: white;
+    color: #1A1876;
+}
+
+.jp-card-logo.jp-card-visa:before {
+    background: #1A1876;
+}
+
+.jp-card-logo.jp-card-visa:after {
+    background: #E79800;
+}
+
+.jp-card.jp-card-visa.jp-card-identified .jp-card-front:before,
+.jp-card.jp-card-visa.jp-card-identified .jp-card-back:before {
+    background-color: #191278;
+}
+
+.jp-card-logo.jp-card-mastercard {
+    color: white;
+    font-weight: bold;
+    text-shadow: none !important;
+}
+
+.jp-card-logo.jp-card-mastercard:before,
+.jp-card-logo.jp-card-mastercard:after {
+    border-radius: 18px;
+}
+
+.jp-card-logo.jp-card-mastercard:before {
+    background: #FF0000;
+}
+
+.jp-card-logo.jp-card-mastercard:after {
+    background: #FFAB00;
+}
+
+.jp-card.jp-card-mastercard.jp-card-identified .jp-card-front:before,
+.jp-card.jp-card-mastercard.jp-card-identified .jp-card-back:before {
+    background-color: #0061A8;
+}
+
+.jp-card-logo.jp-card-maestro {
+    color: white;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.6);
+}
+
+.jp-card-logo.jp-card-maestro:before {
+    background: #0064CB;
+}
+
+.jp-card-logo.jp-card-maestro:after {
+    background: #CC0000;
+}
+
+.jp-card.jp-card-maestro.jp-card-identified .jp-card-front:before,
+.jp-card.jp-card-maestro.jp-card-identified .jp-card-back:before {
+    background-color: #0B2C5F;
+}
+
+.jp-card-logo.jp-card-dankort {
+    border-radius: 8px;
+    border: #000000 1px solid;
+    background-color: #FFFFFF;
+}
+
+.jp-card-logo.jp-card-dankort .dk:before {
+    background-color: #ED1C24;
+    border-radius: 6px;
+}
+
+.jp-card-logo.jp-card-dankort .dk:after {
+    border-style: solid;
+    border-width: 7px 7px 10px 0;
+    border-color: transparent #ED1C24 transparent transparent;
+}
+
+.jp-card-logo.jp-card-dankort .d,
+.jp-card-logo.jp-card-dankort .k {
+    background: white;
+}
+
+.jp-card-logo.jp-card-dankort .d:before {
+    background: #ED1C24;
+    border-radius: 2px 4px 6px 0px;
+}
+
+.jp-card-logo.jp-card-dankort .k:before {
+    border-width: 8px 5px 0 0;
+    border-color: #ED1C24 transparent transparent transparent;
+}
+
+.jp-card-logo.jp-card-dankort .k:after {
+    border-width: 0 5px 8px 0;
+    border-color: transparent transparent #ED1C24 transparent;
+}
+
+.jp-card.jp-card-dankort.jp-card-identified .jp-card-front:before,
+.jp-card.jp-card-dankort.jp-card-identified .jp-card-back:before {
+    background-color: #0055C7;
+}
+
+.jp-card-logo.jp-card-elo .o {
+    position: relative;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    right: 0;
+    top: 7px;
+    border-radius: 100%;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(50%, yellow), color-stop(50%, red));
+    background-image: linear-gradient(yellow 50%, red 50%);
+    -webkit-transform: rotate(40deg);
+    transform: rotate(40deg);
+    text-indent: -9999px;
+}
+
+.jp-card-logo.jp-card-elo .o:before {
+    content: "";
+    position: absolute;
+    width: 49%;
+    height: 49%;
+    background: black;
+    border-radius: 100%;
+    text-indent: -99999px;
+    top: 25%;
+    left: 25%;
+}
+
+.jp-card.jp-card-elo.jp-card-identified .jp-card-front:before,
+.jp-card.jp-card-elo.jp-card-identified .jp-card-back:before {
+    background-color: #6F6969;
+}
+
+.jp-card .jp-card-front,
+.jp-card .jp-card-back {
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.3) !important;
+    border: 2px solid white !important;
+}
+
+.jp-card .jp-card-front:before,
+.jp-card .jp-card-back:before {
+    border-radius: 10px;
+}
+
+.jp-card .jp-card-front .jp-card-display,
+.jp-card .jp-card-back .jp-card-display {
+    color: white;
+    font-weight: normal;
+    opacity: 1;
+}
+
+.jp-card .jp-card-front .jp-card-shiny,
+.jp-card .jp-card-back .jp-card-shiny {
+    background: rgba(255, 255, 255, 0.5) !important;
+}
+
+.jp-card .jp-card-front .jp-card-shiny:before,
+.jp-card .jp-card-back .jp-card-shiny:before {
+    background: rgba(255, 255, 255, 0.5) !important;
+}
+
+.jp-card .jp-card-back .jp-card-bar {
+    background-color: #444;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#444), to(#333));
+    background-image: linear-gradient(#444, #333);
+}
+
+.jp-card .jp-card-back:after {
+    background-color: #FFF;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#FFF));
+    background-image: linear-gradient(#FFF, #FFF);
+}
+
+.jp-card .jp-card-back .jp-card-shiny:after {
+    content: "This card has been issued by Jesse Pollak and is licensed for anyone to use anywhere for free.AIt comes with no warranty.A For support issues, please visit: github.com/jessepollak/card.";
+    position: absolute;
+    left: 120%;
+    top: 5%;
+    color: white;
+    font-size: 7px;
+    width: 230px;
+    opacity: .5;
+}
+
+.jp-card.jp-card-identified {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.jp-card.jp-card-identified .jp-card-front,
+.jp-card.jp-card-identified .jp-card-back {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.jp-card.jp-card-identified .jp-card-front .jp-card-logo,
+.jp-card.jp-card-identified .jp-card-back .jp-card-logo {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+.jp-card.jp-card-identified .jp-card-front:before,
+.jp-card.jp-card-identified .jp-card-back:before {
+    background-image: none !important;
+}

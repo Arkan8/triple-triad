@@ -27,37 +27,10 @@
                             <div class="card-body" style="background-color: #17181c;">
                                 <!-- TUS CARTAS -->
                                 <br>
+                                <span *ngIf="cardUserArray">
                                 <span *ngFor="let card of cardUserArray">
-                                    <span *ngIf="card.rareza == '1'">
-                                        <img src="../../../assets/images/nv1_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
-                                    </span>
-                                <span *ngIf="card.rareza == '2'">
-                                        <img src="../../../assets/images/nv2_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
-                                   </span>
-                                <span *ngIf="card.rareza == '3'">
-                                        <img src="../../../assets/images/nv3_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
-                                   </span>
-                                <span *ngIf="card.rareza == '4'">
-                                        <img src="../../../assets/images/nv4_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
-                                   </span>
-                                <span *ngIf="card.rareza == '5'">
-                                        <img src="../../../assets/images/nv5_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
-                                   </span>
-                                <span *ngIf="card.rareza == '6'">
-                                        <img src="../../../assets/images/nv6_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
-                                   </span>
-                                <span *ngIf="card.rareza == '7'">
-                                        <img src="../../../assets/images/nv7_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
-                                   </span>
-                                <span *ngIf="card.rareza == '8'">
-                                        <img src="../../../assets/images/nv8_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
-                                   </span>
-                                <span *ngIf="card.rareza == '9'">
-                                        <img src="../../../assets/images/nv9_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
-                                   </span>
-                                <span *ngIf="card.rareza == '10'">
-                                        <img src="../../../assets/images/nv10_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
-                                   </span>
+                                        <img src="../../../assets/images/nv{{card.rareza}}_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+                                </span>
                                 </span>
                             </div>
                         </div>
@@ -83,9 +56,11 @@
                                 <!-- CARTAS DE NIVEL 1 -->
                                 <br>
                                 <span *ngFor="let card of cards.slice(0,11)">
-                                    <span *ngIf="card.rareza == '1'">
-                                        <img src="../../../assets/images/nv1_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
-                                    </span>
+                                    <span *ngIf="card != undefined">
+                                        <span *ngIf="card.rareza == '1'">
+                                            <img src="../../../assets/images/nv1_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+                                        </span>
+                                </span>
                                 </span>
                             </div>
                         </div>
@@ -110,9 +85,11 @@
                                 <!-- CARTAS DE NIVEL 2 -->
                                 <br>
                                 <span *ngFor="let card of cards.slice(11,22)">
-                                    <span *ngIf="card.rareza == '2'">
-                                        <img src="../../../assets/images/nv2_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
-                                    </span>
+                                    <span *ngIf="card != undefined">
+                                        <span *ngIf="card.rareza == '2'">
+                                            <img src="../../../assets/images/nv2_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
+                                        </span>
+                                </span>
                                 </span>
                             </div>
                         </div>
@@ -137,9 +114,11 @@
                                 <!-- CARTAS DE NIVEL 3 -->
                                 <br>
                                 <span *ngFor="let card of cards.slice(22,33)">
+                                    <span *ngIf="card != undefined">
                                     <span *ngIf="card.rareza == '3'">
                                         <img src="../../../assets/images/nv3_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
                                     </span>
+                                </span>
                                 </span>
                             </div>
                         </div>
@@ -164,9 +143,11 @@
                                 <!-- CARTAS DE NIVEL 4 -->
                                 <br>
                                 <span *ngFor="let card of cards.slice(33,44)">
+                                     <span *ngIf="card != undefined">
                                     <span *ngIf="card.rareza == '4'">
                                         <img src="../../../assets/images/nv4_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
                                     </span>
+                                </span>
                                 </span>
                             </div>
                         </div>
@@ -191,9 +172,11 @@
                                 <!-- CARTAS DE NIVEL 5 -->
                                 <br>
                                 <span *ngFor="let card of cards.slice(44,55)">
+                                     <span *ngIf="card != undefined">
                                     <span *ngIf="card.rareza == '5'">
                                         <img src="../../../assets/images/nv5_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
                                     </span>
+                                </span>
                                 </span>
                             </div>
                         </div>
@@ -218,9 +201,11 @@
                                 <!-- CARTAS DE NIVEL 6 -->
                                 <br>
                                 <span *ngFor="let card of cards.slice(55,66)">
+                                     <span *ngIf="card != undefined">
                                     <span *ngIf="card.rareza == '6'">
                                         <img src="../../../assets/images/nv6_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
                                     </span>
+                                </span>
                                 </span>
                             </div>
                         </div>
@@ -245,9 +230,11 @@
                                 <!-- CARTAS DE NIVEL 7 -->
                                 <br>
                                 <span *ngFor="let card of cards.slice(66,77)">
+                                     <span *ngIf="card != undefined">
                                     <span *ngIf="card.rareza == '7'">
                                         <img src="../../../assets/images/nv7_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
                                     </span>
+                                </span>
                                 </span>
                             </div>
                         </div>
@@ -272,9 +259,11 @@
                                 <!-- CARTAS DE NIVEL 8 -->
                                 <br>
                                 <span *ngFor="let card of cards.slice(77,88)">
+                                     <span *ngIf="card != undefined">
                                     <span *ngIf="card.rareza == '8'">
                                         <img src="../../../assets/images/nv8_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
                                     </span>
+                                </span>
                                 </span>
                             </div>
                         </div>
@@ -299,9 +288,11 @@
                                 <!-- CARTAS DE NIVEL 9 -->
                                 <br>
                                 <span *ngFor="let card of cards.slice(88,99)">
+                                     <span *ngIf="card != undefined">
                                     <span *ngIf="card.rareza == '9'">
                                         <img src="../../../assets/images/nv9_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
                                     </span>
+                                </span>
                                 </span>
                             </div>
                         </div>
@@ -326,9 +317,11 @@
                                 <!-- CARTAS DE NIVEL 10 -->
                                 <br>
                                 <span *ngFor="let card of cards.slice(99,110)">
+                                     <span *ngIf="card != undefined">
                                     <span *ngIf="card.rareza == '10'">
                                         <img src="../../../assets/images/nv10_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="14%" class="img-shadow-1">
                                     </span>
+                                </span>
                                 </span>
                             </div>
                         </div>

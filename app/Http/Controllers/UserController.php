@@ -410,7 +410,7 @@ class UserController extends Controller
 
         return response()->json(array(
             'status' => 'success',
-            'message' => 'Puntuación actualizada'
+            'message' => 'Puntos actualizada'
         ), 200);
     }
 
@@ -425,6 +425,45 @@ class UserController extends Controller
         return response()->json(array(
             'user' => $user,
             'status' => 'success',
+        ), 200);
+    }
+
+    public function comprarPack(Request $request){
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods, Authorization, X-Requested-With');
+
+        $user_id = (int)$request['user_id'];
+        $packComprado = (int)$request['packComprado'];
+
+        $user = User::find($user_id);
+        $cards = Card::where('pack_id', $packComprado)->get();
+
+        $user->cards()->saveMany($cards);
+
+        return response()->json(array(
+            'status' => 'success',
+            'message' => 'Pack comprado'
+        ), 200);
+    }
+
+    public function removePoints(Request $request){
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods, Authorization, X-Requested-With');
+
+        $puntos = (int)$request['restarPuntos'];
+        $user = (int)$request['user_id'];
+
+        $user = User::find($user);
+
+        $puntos_actuales = $user->puntos;
+
+        $user->puntos = $puntos_actuales - $puntos;
+
+        $user->save();
+
+        return response()->json(array(
+            'status' => 'success',
+            'message' => 'Puntos actualizada'
         ), 200);
     }
 }
