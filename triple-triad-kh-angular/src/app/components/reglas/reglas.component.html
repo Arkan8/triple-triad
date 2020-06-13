@@ -1,5 +1,127 @@
-<body>
-    <div class="container">
-        <h1>{{title}}</h1>
+<div class="col-md-12">
+    <div class="row fondo">
+        <div class="col-lg-1 col-md-1 col-xs-1"></div>
+        <div class=" card col-lg-10 col-md-10 col-xs-10">
+            <h2 style="margin-top: 20px;">{{title}}</h2>
+            <hr>
+
+            <h3>CÓMO SE JUEGA</h3>
+
+            <!-- **************************** ROW **************************** -->
+            <div class="row">
+
+                <div class="col-2"></div>
+                <div class="col-2">
+                    <img src="../../../assets/images/nv10_azul/riku_azul.png" width="100%">
+                </div>
+                <div class="col-6 perolo">
+                    <p>Al principio de la partida <b>se seleccionarán 5 cartas aleatorias</b> del mazo del jugador. La puntuación inicial será de 5 para cada jugador (uno por cada carta). Para ganar, <b>debes tener más cartas en tu poder que el rival</b>.</p>
+                    <p>Como puedes observar en la imagen de la izquierda, la carta contiene <b>4 números en la esquina superior izquierda</b>, en este caso por valores de 9, 6, 4 y A (el mayor de todos, con un valor de 10).</p>
+
+
+                </div>
+                <div class="col-2"></div>
+                <!-- **************************** ROW **************************** -->
+            </div>
+
+            <!-- **************************** ROW **************************** -->
+            <div class="row">
+
+                <div class="col-2"></div>
+                <div class="col-6 perolo">
+                    <p>El tablero está conformado por <b>una cuadrícula de 3x3</b>, tal y como se muestre en la imagen de la derecha. Al colocar la carta mostrada anteriormente en el <b>centro de la cuadrícula</b>, para poder darle la vuelta y hacerla nuestra,
+                        <b>debemos
+                        colocar de forma adyacente una carta que supere el valor</b> según la posición. Es decir, <b>si colocamos una carta debajo</b>, para darle la vuelta, <b>debe tener el valor 7 o más alto</b> en la parte superior
+                        de la carta.
+                    </p>
+                </div>
+                <div class="col-2 ">
+                    <img src="../../../assets/images/reglas/tablero.png " width="100% ">
+                </div>
+                <div class="col-2 "></div>
+                <!-- **************************** ROW **************************** -->
+            </div>
+            <h4 style="margin-bottom: 40px;">A continuación, un ejemplo práctico</h4>
+
+            <!-- **************************** ROW **************************** -->
+            <div class="row">
+
+                <div class="col-2"></div>
+                <div class="col-4">
+                    Jugada 1:
+                    <img src="../../../assets/images/reglas/jugada 1.PNG" width="100% ">
+                </div>
+                <div class="col-4 ">
+                    Jugada 2:
+                    <img src="../../../assets/images/reglas/jugada 2.PNG" width="100% ">
+                </div>
+                <div class="col-2 "></div>
+            </div>
+            <!-- **************************** ROW **************************** -->
+            <p style="margin-top: 40px;">Al resolverse la jugada 2, <b>la carta Ventus</b> supera con su valor de arriba, <b>la carta Riku</b> en su valor abajo, por lo que <b>nos haríamos con ella</b> y el resultado quedaría tal que así:</p>
+
+            <!-- **************************** ROW **************************** -->
+            <div class="row">
+
+                <div class="col-4"></div>
+                <div class="col-4">
+                    <img src="../../../assets/images/reglas/jugada_resuelta.PNG" width="100% ">
+                </div>
+                <div class="col-4"></div>
+            </div>
+            <!-- **************************** ROW **************************** -->
+
+            <p style="margin-top: 40px;">Los jugadores seguirían hasta que el tablero se llene. El jugador que acabe con más cartas en su haber, <b>ganaría la partida</b>, llevándose de premio <b>100 Soles</b>. En caso de <b>empate</b>, ambos jugadores recibirían <b>30 Soles</b></p>
+
+            <hr>
+            <h3>REGLAS PARA FUTURAS VERSIONES</h3>
+            <hr>
+            <h4>REGLA SUMA</h4>
+
+            <!-- **************************** ROW **************************** -->
+            <div class="row">
+
+                <div class="col-2"></div>
+                <div class="col-4">
+                    Imagina el siguiente supuesto:
+                    <img src="../../../assets/images/reglas/suma1.PNG" width="100%">
+                    <p>Supongamos que <b>no tienes</b> ninguna carta en la mano con un <b>poder superior a 7</b> en la parte de abajo. Tranquilo, no está todo perdido</p>
+                </div>
+                <div class="col-4">
+                    Fíjate en el siguiente movimiento:
+                    <img src="../../../assets/images/reglas/suma2.PNG" width="100%">
+                    <p>La carta que acabamos de colocar tiene <b>un 1 a la derecha</b>, y nuestra otra carta tiene <b>un 9 a la izquierda</b>. Esto suma 10. A su vez, nuestro Umbrío tiene <b>un 3 abajo</b>, y la carta rival <b>un 7 arriba</b>. Esto también
+                        <b>suma 10</b> ¡Qué casualidad! Tras este movimiento, <b>la carta rival se volteará</b> y pasará a ser nuestra
+                    </p>
+                    <div class="col-2"></div>
+                </div>
+            </div>
+
+            <hr>
+            <h4>REGLA IGUAL</h4>
+            <!-- **************************** ROW **************************** -->
+            <div class="row">
+
+                <div class="col-2"></div>
+                <div class="col-4">
+                    Sobre la siguiente situación:
+                    <img src="../../../assets/images/reglas/igual1.PNG" width="100% ">
+                    <p>En esta ocasión, el rival tiene cartas con <b>valor A</b>, es decir, el valor más alto, por lo que <b>no se pueden voltear por el método estándar</b>, así que habrá que usar otro método. Exacto, la regla <b>IGUAL</b>.</p>
+                </div>
+                <div class="col-4">
+                    Sobre la siguiente situación:
+                    <img src="../../../assets/images/reglas/igual2.PNG" width="100% ">
+                    <p>Si te fijas, el lado izquierdo e inferior de nuestra carta coincide con las cartas adyacentes, por lo que se produciría el efecto <b>IGUAL</b>, y voltearíamos <b>ambas cartas</b> rivales</p>
+                </div>
+                <div class="col-2 "></div>
+            </div>
+            <!-- **************************** ROW **************************** -->
+            <h4 style="margin-top: 30px;"><b>¡IMPORTANTE!</b></h4>
+            <p>Tanto la regla <b>SUMA</b> como la regla <b>IGUAL</b>, surten efecto <b>únicamente cuando al menos una de las cartas</b> afectadas por la jugada pertenece al rival. <b>No puedes</b> emplear estas técnicas usando <b>solo tus cartas</b>, por
+                razones evidentes.</p>
+
+
+
+            <div class="col-lg-1 col-md-1 col-xs-1 "></div>
+        </div>
     </div>
-</body>

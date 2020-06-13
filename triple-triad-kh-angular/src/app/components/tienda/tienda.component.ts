@@ -34,28 +34,36 @@ export class TiendaComponent implements OnInit {
     var target = event.target || event.srcElement || event.currentTarget;
     var idAttr = target.attributes.id;
     var packComprado = idAttr.nodeValue;
-
-    this._userService.comprarPack(packComprado, this.identity.sub).subscribe(
-      (response) => {
-        if (response.status == 'success'){
-          let restarPuntos;
-          if (packComprado == '1') {
-            restarPuntos = 50;
-          } else if(packComprado == '2'){
-            restarPuntos = 75;
-          } else{
-            restarPuntos = 100;
-          }
-
-          this._userService.removePoints(restarPuntos, this.identity.sub).subscribe(
-            (response) => {
-              this._router.navigate(['/']);
-            }
-          )
-        }
-      }
-    )
     
+    var precioPack = $("body").find('#' + packComprado).parent().parent().next().text();
+
+    if (this.identity.puntos < precioPack) {
+      alert("¡No te alcanzan los Soles!");
+    } else{
+      this._userService.comprarPack(packComprado, this.identity.sub).subscribe(
+        (response) => {
+          if (response.status == 'success'){
+            let restarPuntos;
+            if (packComprado == '1') {
+              restarPuntos = 50;
+            } else if(packComprado == '2'){
+              restarPuntos = 75;
+            } else{
+              restarPuntos = 100;
+            }
+
+            this._userService.removePoints(restarPuntos, this.identity.sub).subscribe(
+              (response) => {
+                let currentIdentity = JSON.parse(localStorage.getItem('identity'));
+                currentIdentity.puntos = response.user.puntos;
+                localStorage.setItem('identity', JSON.stringify(currentIdentity));
+                this._router.navigate(['/']);
+              }
+            )
+          }
+        }
+      )
+    }
 
 
 

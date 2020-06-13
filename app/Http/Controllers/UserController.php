@@ -462,6 +462,7 @@ class UserController extends Controller
         $user->save();
 
         return response()->json(array(
+            'user' => $user,
             'status' => 'success',
             'message' => 'Puntos actualizada'
         ), 200);
