@@ -4,7 +4,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark navbar-survival101">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
-                <img src="../assets/images/tt_logo.png" width="160px" [routerLink]="['']" style="cursor: pointer;">
+                <img src="http://triple-triad.com/images/tt_logo.png" width="160px" [routerLink]="['']" style="cursor: pointer;">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -42,7 +42,7 @@
                     </li>
 
                     <li class="nav-item enlace2">
-                        <a class="nav-link"><img src="../assets/images/sun.png" width="18px"> {{identity.puntos}}</a>
+                        <a class="nav-link"><img src="http://triple-triad.com/images/sun.png" width="18px"> {{identity.puntos}}</a>
                     </li>
 
                     <li class="nav-item enlace2">
@@ -63,49 +63,6 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js'></script>
 
-    <!-- <div class="navbar navbar-expand-lg navbar-light bg-dark">
-        <div class="navbar-brand">
-            <a class="navbar-brand"><img src="../assets/images/tt_logo.png" width="50%" [routerLink]="['']" style="cursor: pointer;"></a>
-        </div>
-        <div class="collapse navbar-collapse" id="menu">
-
-            <ul class="nav nav-pills nav-justified">
-                <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['']">Inicio</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " *ngIf="identity " [routerLink]="[ 'cartas'] ">Cartas</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#!">Longer nav link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#!">Link</a>
-                </li>
-            </ul>
-
-            <ul class="nav navbar-nav ml-auto" *ngIf="!identity">
-                <li class="nav-item nav-link">
-                    <a [routerLink]="[ 'login'] ">Login</a>
-                </li>
-                <li class="nav-item nav-link">
-                    <a [routerLink]="[ 'register']">Registro</a>
-                </li>
-            </ul>
-
-            <ul class="nav navbar-nav ml-auto" *ngIf="identity">
-                <li class="nav-item nav-link">
-                    <a href="#">{{identity.username}}</a>
-                </li>
-                <li class="nav-item nav-link">
-                    <a [routerLink]="[ 'logout', 1]"><span class="glyphicon glyphicon-log-out"></span>
-                        Salir
-                    </a>
-                </li>
-            </ul>
-
-        </div>
-    </div> -->
 </header>
 
 
