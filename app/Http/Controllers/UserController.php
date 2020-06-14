@@ -37,6 +37,7 @@ class UserController extends Controller
             $pass_cifrada = hash('sha256', $password);
             $user->password = $pass_cifrada;
             $user->puntos = 100;
+            $user->turno = 2;
 
             //Comprobar si existe el usuario
             $isset_email = User::where('email', '=', $email)->first();
@@ -465,6 +466,25 @@ class UserController extends Controller
             'user' => $user,
             'status' => 'success',
             'message' => 'Puntos actualizada'
+        ), 200);
+    }
+
+    public function updateTurno(Request $request){
+        header('Access-Control-Allow-Origin: *');
+        header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Access-Control-Allow-Methods, Authorization, X-Requested-With');
+
+        $match = (int)$request['match_id'];
+        $turno = (int)$request['turno'];
+
+        $match = Match::find($match);
+
+        $match->turno = $turno;
+
+        $match->save();
+
+        return response()->json(array(
+            'status' => 'success',
+            'message' => 'Turno actualizado'
         ), 200);
     }
 }

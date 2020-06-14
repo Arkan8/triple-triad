@@ -46,7 +46,10 @@
 </div>
 
 <div class="col-8" style="text-align: center;">
-    <button (click)="hacerJugada()" class="btn btn-primary" id="botonJugar">Hacer jugada</button>
+    <button *ngIf="identity.sub == match.player1 && match.turno == 1" (click)="hacerJugada()" class="btn btn-primary" id="botonJugar">Hacer jugada</button>
+    <button *ngIf="identity.sub == match.player1 && match.turno == 2" class="btn btn-warning" id="botonJugar" disabled>Turno del contrincante</button>
+    <button *ngIf="identity.sub == match.player2 && match.turno == 1" class="btn btn-warning" id="botonJugar" disabled>Turno del contrincante</button>
+    <button *ngIf="identity.sub == match.player2 && match.turno == 2" (click)="hacerJugada()" class="btn btn-primary" id="botonJugar">Hacer jugada</button>
     <table class="tabla">
         <tr>
             <!-- btn-group-toggle -->

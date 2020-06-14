@@ -39,6 +39,7 @@ Route::post('/deleteDuel', 'UserController@deleteDuel');
 Route::post('/updatePuntuacion', 'UserController@updatePuntuacion');
 Route::post('/updateCartasJugada', 'UserController@updateCartasJugada');
 Route::post('/deleteMatch', 'UserController@deleteMatch');
+Route::post('/updateTurno', 'UserController@updateTurno');
 
 Route::resource('/cards', 'CardController');
 Route::post('/cardsUser', 'CardController@cardsUser');

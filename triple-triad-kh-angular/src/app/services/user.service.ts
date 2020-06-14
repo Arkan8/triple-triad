@@ -297,4 +297,18 @@ export class UserService{
         
         return this._http.post(this.url + 'removePoints', params, {headers: headers});
     }
+
+    updateTurno(match_id, turno): Observable<any>{
+
+        // Initialize Params Object
+        let params = new HttpParams();
+
+        // Begin assigning parameters
+        params = params.append('match_id', match_id);
+        params = params.append('turno', turno);
+
+        let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+        
+        return this._http.post(this.url + 'updateTurno', params, {headers: headers});
+    }
 }
