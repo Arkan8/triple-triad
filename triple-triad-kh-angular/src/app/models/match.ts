@@ -9,5 +9,6 @@ export class Match{
         public puntuacionPlayer2: number,
         public cartasPlayer1: string,
         public cartasPlayer2: string,
+        public turno: number
     ){}
 }

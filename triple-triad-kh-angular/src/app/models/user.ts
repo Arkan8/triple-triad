@@ -5,6 +5,5 @@ export class User{
         public email: string,
         public password: string,
         public puntos: number,
-        public turno: number,
     ){}
 }

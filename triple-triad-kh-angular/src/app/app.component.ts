@@ -22,7 +22,7 @@ export class AppComponent implements OnInit, DoCheck {
   ){
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
-    this.user = new User(1, '', '', '', 100, 2);
+    this.user = new User(1, '', '', '', 100);
   }
 
   ngOnInit(){

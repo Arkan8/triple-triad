@@ -57,7 +57,7 @@ export class MatchComponent implements OnInit {
       this.token = this._userService.getToken();
       this.cartasMano1 = localStorage.getItem('cartas1');
       this.cartasMano2 = localStorage.getItem('cartas2');
-      this.match = new Match (1, 1, 1, '', '', 5, 5, '', '');
+      this.match = new Match (1, 1, 1, '', '', 5, 5, '', '', 2);
     }
     
     ngOnInit(): void {

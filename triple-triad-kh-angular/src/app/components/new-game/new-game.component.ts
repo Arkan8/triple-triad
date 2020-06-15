@@ -47,7 +47,7 @@ export class NewGameComponent implements OnInit {
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
     this.duel = new Duel (1, 1, 1, '', '');
-    this.match = new Match (1, 1, 1, '', '', 1, 1, '', '');
+    this.match = new Match (1, 1, 1, '', '', 1, 1, '', '', 2);
    }
 
   ngOnInit(): void {
