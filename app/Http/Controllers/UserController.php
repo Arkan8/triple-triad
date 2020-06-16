@@ -37,7 +37,6 @@ class UserController extends Controller
             $pass_cifrada = hash('sha256', $password);
             $user->password = $pass_cifrada;
             $user->puntos = 100;
-            $user->turno = 2;
 
             //Comprobar si existe el usuario
             $isset_email = User::where('email', '=', $email)->first();
@@ -206,6 +205,7 @@ class UserController extends Controller
         $match->puntuacionPlayer2 = $params->puntuacionPlayer2;
         $match->cartasPlayer1 = $params->cartasPlayer1;
         $match->cartasPlayer2 = $params->cartasPlayer2;
+        $match->turno = 2;
 
         
         $match->save();
