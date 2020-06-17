@@ -26,14 +26,13 @@ export class AppComponent implements OnInit, DoCheck {
   }
 
   ngOnInit(){
-    /* if (this.identity) {
+    if (this.identity) {
       this._userService.userNewPoints(this.identity.sub).subscribe(
         (response) => {
-          console.log(response.user);
           localStorage.setItem('identity', JSON.stringify(response.user));
         }
       )
-    } */
+    }
   }
 
   ngDoCheck(){
