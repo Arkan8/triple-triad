@@ -28,7 +28,7 @@ class JwtAuth {
         if ($signup) {
             // Generar token
             $token = array(
-                'sub' => $user->id,
+                'id' => $user->id,
                 'username' => $user->username,
                 'email' => $user->email,
                 'puntos' => $user->puntos,
@@ -63,7 +63,7 @@ class JwtAuth {
             $auth = false;
         }
 
-        if (isset($decoded) && is_object($decoded) && isset($decoded->sub)) {
+        if (isset($decoded) && is_object($decoded) && isset($decoded->id)) {
             $auth = true;
         }else{
             $auth = false;

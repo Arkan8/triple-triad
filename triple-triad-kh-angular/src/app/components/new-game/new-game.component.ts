@@ -67,22 +67,22 @@ export class NewGameComponent implements OnInit {
 
           for (let i = 0; i < this.retadores.length; i++) {
             for (let j = 0; j < this.retados.length; j++) {
-              if (this.identity.sub == this.retadores[i] || this.identity.sub == this.retados[j]) {
+              if (this.identity.id == this.retadores[i] || this.identity.id == this.retados[j]) {
                 this.isHidden = true;
 
-                if(this.identity.sub == this.retadores[i]){
+                if(this.identity.id == this.retadores[i]){
                   this.isWaiting = false;
                   this.isChallenged = true;
                   this.isHidden = true;
                 } 
-                else if (this.identity.sub = this.retados[j]) {
+                else if (this.identity.id = this.retados[j]) {
                   this.isWaiting = true;
                   this.isChallenged = false;
                   this.isHidden = true;
                 }
               }
               
-              if (this.identity.sub == this.retados[j]) {
+              if (this.identity.id == this.retados[j]) {
                 this.retadorId = this.retadores[j];
                 this.elRetador = this.retadoresName[j];
               }
@@ -122,7 +122,7 @@ export class NewGameComponent implements OnInit {
   }
 
   retar(){
-    var retador = this.identity.sub;
+    var retador = this.identity.id;
     var retado = this.selectedObj.id;
     var retadorName = this.identity.username;
     var retadoName = this.selectedObj.username;
@@ -147,7 +147,7 @@ export class NewGameComponent implements OnInit {
     
     aceptar(){
       this.match.player1 = this.retadorId;
-      this.match.player2 = this.identity.sub
+      this.match.player2 = this.identity.id
       this.match.player1Name = this.elRetador;
       this.match.player2Name = this.identity.username;
       this.match.puntuacionPlayer1 = 5;

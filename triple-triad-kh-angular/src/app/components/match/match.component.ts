@@ -62,7 +62,7 @@ export class MatchComponent implements OnInit {
     
     ngOnInit(): void {
       
-      var user_id = this.identity.sub;
+      var user_id = this.identity.id;
       
       this.sub = this._route.params.subscribe(params => {
         this.match_id = +params['id'];
@@ -122,7 +122,7 @@ export class MatchComponent implements OnInit {
             
             if(this.board.grid1 != null && this.board.grid2 != null && this.board.grid3 != null && this.board.grid4 != null && this.board.grid5 != null && this.board.grid6 != null && this.board.grid7 != null && this.board.grid8 != null && this.board.grid9 != null){
               if (JSON.parse(this.match.cartasPlayer1).length > JSON.parse(this.match.cartasPlayer2).length) {
-                if (this.identity.sub == this.match.player1) {
+                if (this.identity.id == this.match.player1) {
                   alert("Has ganado la partida, recibirás 100 Soles por tu victoria");
                   if (this.board) {
                     this._userService.deleteBoard(this.match_id).subscribe(
@@ -131,7 +131,7 @@ export class MatchComponent implements OnInit {
                           (response) => {
                             this._userService.addPoints(100, this.match.player1).subscribe(
                               (response) =>{
-                                
+                                this._router.navigate(['/']);
                               }
                             )
                           }
@@ -141,14 +141,18 @@ export class MatchComponent implements OnInit {
                   } else{
                     this._router.navigate(['/']);
                   }
-                } else if(this.identity.sub == this.match.player2){
+                } else if(this.identity.id == this.match.player2){
                   alert("Has perdido la partida, más suerte la próxima vez");
                   if (this.board) {
                     this._userService.deleteBoard(this.match_id).subscribe(
                       (response) => {
                         this._userService.deleteMatch(this.match_id).subscribe(
                           (response) => {
-                            this._router.navigate(['/']);
+                            this._userService.addPoints(100, this.match.player1).subscribe(
+                              (response) =>{
+                                this._router.navigate(['/']);
+                              }
+                            )
                           }
                         )
                       }
@@ -158,14 +162,18 @@ export class MatchComponent implements OnInit {
                   }
                 }
               } else if(JSON.parse(this.match.cartasPlayer2).length > JSON.parse(this.match.cartasPlayer1).length){
-                if (this.identity.sub == this.match.player1) {
+                if (this.identity.id == this.match.player1) {
                   alert("Has perdido la partida, más suerte la próxima vez");
                   if (this.board) {
                     this._userService.deleteBoard(this.match_id).subscribe(
                       (response) => {
                         this._userService.deleteMatch(this.match_id).subscribe(
                           (response) => {
-                            this._router.navigate(['/']);
+                            this._userService.addPoints(100, this.match.player2).subscribe(
+                              (response) =>{
+                                this._router.navigate(['/']);
+                              }
+                            )
                           }
                         )
                       }
@@ -173,7 +181,7 @@ export class MatchComponent implements OnInit {
                   } else{
                     this._router.navigate(['/']);
                   }
-                } else if(this.identity.sub == this.match.player2){
+                } else if(this.identity.id == this.match.player2){
                   alert("Has ganado la partida, recibirás 100 Soles por tu victoria");
                   if (this.board) {
                     this._userService.deleteBoard(this.match_id).subscribe(
@@ -182,7 +190,7 @@ export class MatchComponent implements OnInit {
                           (response) => {
                             this._userService.addPoints(100, this.match.player2).subscribe(
                               (response) =>{
-                                
+                                this._router.navigate(['/']);
                               }
                             )
                           }
@@ -204,7 +212,7 @@ export class MatchComponent implements OnInit {
                             (response) =>{
                               this._userService.addPoints(30, this.match.player2).subscribe(
                                 (response) =>{
-                                  
+                                  this._router.navigate(['/']);
                                 }
                               )
                             }
@@ -224,7 +232,7 @@ export class MatchComponent implements OnInit {
             }
             )
             
-            if (this.identity.sub == this.match.player1) {
+            if (this.identity.id == this.match.player1) {
               if (this.match.cartasPlayer1 == "" || this.match.cartasPlayer1 == null) {
                 this.asignarCartas1();
                 localStorage.setItem('cartas1', this.match.cartasPlayer1);
@@ -257,7 +265,7 @@ export class MatchComponent implements OnInit {
                 }
 
               }
-            } else if(this.identity.sub == this.match.player2){
+            } else if(this.identity.id == this.match.player2){
               if (this.match.cartasPlayer2 == "" || this.match.cartasPlayer2 == null) {
                 this.asignarCartas2();
                 localStorage.setItem('cartas2', this.match.cartasPlayer2);
@@ -561,10 +569,10 @@ export class MatchComponent implements OnInit {
           }
 
           let turno;
-          if (this.identity.sub == this.match.player1) {
+          if (this.identity.id == this.match.player1) {
             turno = 2;
           }
-          if (this.identity.sub == this.match.player2) {
+          if (this.identity.id == this.match.player2) {
             turno = 1;
           }
 
@@ -587,7 +595,7 @@ export class MatchComponent implements OnInit {
 }   
 
 resolverJugada(grid_id){
-if (this.identity.sub == this.match.player1) {                      
+if (this.identity.id == this.match.player1) {                      
   
   let cartaConseguida;
   for (let i = 0; i < this.cartas2.length; i++) {
@@ -612,7 +620,7 @@ if (this.identity.sub == this.match.player1) {
     }
     )
     
-  } else if(this.identity.sub == this.match.player2){
+  } else if(this.identity.id == this.match.player2){
     //JUGADOR 2
     
     let cartaConseguida;

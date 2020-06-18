@@ -1,18 +1,18 @@
 <div class="col-md-12">
     <div class="row fondo">
         <div class="col-2">
-            <!-- <div *ngIf="identity.sub == match.player1" class="puntuacion">{{puntuacion1}}</div>
-                <div *ngIf="identity.sub == match.player2" class="puntuacion">{{puntuacion2}}</div> -->
+            <!-- <div *ngIf="identity.id == match.player1" class="puntuacion">{{puntuacion1}}</div>
+                <div *ngIf="identity.id == match.player2" class="puntuacion">{{puntuacion2}}</div> -->
             <br><br><br>
 
-            <div *ngIf="match.player1 == identity.sub">
+            <div *ngIf="match.player1 == identity.id">
 
                 <span *ngFor="let card of cartas1">
                         <div *ngIf="board != null" class="btn-group" data-toggle="buttons" [hidden]="card.id == board.grid1 || card.id == board.grid2 || card.id == board.grid3 || card.id == board.grid4 || card.id == board.grid5 || card.id == board.grid6 || card.id == board.grid7 || card.id == board.grid8 || card.id == board.grid9">
                             <label class="btn">
                                 <input type="radio" name="cartaSeleccionada" value="{{card.nombre}}" autocomplete="off">
-                                <img *ngIf="match.player1 == identity.sub" src="http://triple-triad.com/images/nv{{card.rareza}}_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="60%" class="img-shadow-1">
-                                <img *ngIf="match.player2 == identity.sub" src="http://triple-triad.com/images/nv{{card.rareza}}_rojo/{{card.img_rival}}" style="margin-bottom: 14px;" width="60%" class="img-shadow-1">
+                                <img *ngIf="match.player1 == identity.id" src="http://triple-triad.com/images/nv{{card.rareza}}_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="60%" class="img-shadow-1">
+                                <img *ngIf="match.player2 == identity.id" src="http://triple-triad.com/images/nv{{card.rareza}}_rojo/{{card.img_rival}}" style="margin-bottom: 14px;" width="60%" class="img-shadow-1">
                                 <span hidden>{{card.id}}</span>
                 <span hidden>{{card.valor_arriba}}</span>
                 <span hidden>{{card.valor_abajo}}</span>
@@ -24,14 +24,14 @@
             </span>
         </div>
 
-        <div *ngIf="match.player2 == identity.sub">
+        <div *ngIf="match.player2 == identity.id">
 
             <span *ngFor="let card of cartas2">
         <div *ngIf="board != null" class="btn-group" data-toggle="buttons" [hidden]="card.id == board.grid1 || card.id == board.grid2 || card.id == board.grid3 || card.id == board.grid4 || card.id == board.grid5 || card.id == board.grid6 || card.id == board.grid7 || card.id == board.grid8 || card.id == board.grid9">
             <label class="btn">
                 <input type="radio" name="cartaSeleccionada" value="{{card.nombre}}" autocomplete="off">
-                <img *ngIf="match.player1 == identity.sub" src="http://triple-triad.com/images/nv{{card.rareza}}_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="60%" class="img-shadow-1">
-                <img *ngIf="match.player2 == identity.sub" src="http://triple-triad.com/images/nv{{card.rareza}}_rojo/{{card.img_rival}}" style="margin-bottom: 14px;" width="60%" class="img-shadow-1">
+                <img *ngIf="match.player1 == identity.id" src="http://triple-triad.com/images/nv{{card.rareza}}_azul/{{card.img_aliado}}" style="margin-bottom: 14px;" width="60%" class="img-shadow-1">
+                <img *ngIf="match.player2 == identity.id" src="http://triple-triad.com/images/nv{{card.rareza}}_rojo/{{card.img_rival}}" style="margin-bottom: 14px;" width="60%" class="img-shadow-1">
                 <span hidden>{{card.id}}</span>
             <span hidden>{{card.valor_arriba}}</span>
             <span hidden>{{card.valor_abajo}}</span>
@@ -46,10 +46,10 @@
 </div>
 
 <div class="col-8" style="text-align: center;">
-    <button *ngIf="identity.sub == match.player1 && match.turno == 1" (click)="hacerJugada()" class="btn btn-primary" id="botonJugar">Hacer jugada</button>
-    <button *ngIf="identity.sub == match.player1 && match.turno == 2" class="btn btn-warning" id="botonJugar" disabled>Turno del contrincante</button>
-    <button *ngIf="identity.sub == match.player2 && match.turno == 1" class="btn btn-warning" id="botonJugar" disabled>Turno del contrincante</button>
-    <button *ngIf="identity.sub == match.player2 && match.turno == 2" (click)="hacerJugada()" class="btn btn-primary" id="botonJugar">Hacer jugada</button>
+    <button *ngIf="identity.id == match.player1 && match.turno == 1" (click)="hacerJugada()" class="btn btn-primary" id="botonJugar">Hacer jugada</button>
+    <button *ngIf="identity.id == match.player1 && match.turno == 2" class="btn btn-warning" id="botonJugar" disabled>Turno del contrincante</button>
+    <button *ngIf="identity.id == match.player2 && match.turno == 1" class="btn btn-warning" id="botonJugar" disabled>Turno del contrincante</button>
+    <button *ngIf="identity.id == match.player2 && match.turno == 2" (click)="hacerJugada()" class="btn btn-primary" id="botonJugar">Hacer jugada</button>
     <table class="tabla">
         <tr>
             <!-- btn-group-toggle -->
@@ -153,13 +153,13 @@
 </div>
 <div class="col-2 cartas ">
 
-    <!-- <div *ngIf="identity.sub != match.player1" class="puntuacion">{{puntuacion1}}</div>
-    <div *ngIf="identity.sub != match.player2" class="puntuacion">{{puntuacion2}}</div> -->
+    <!-- <div *ngIf="identity.id != match.player1" class="puntuacion">{{puntuacion1}}</div>
+    <div *ngIf="identity.id != match.player2" class="puntuacion">{{puntuacion2}}</div> -->
     <br>
     <br>
     <br>
 
-    <div *ngIf="match.player1 == identity.sub">
+    <div *ngIf="match.player1 == identity.id">
         <span *ngFor="let card of cartas2">
                 <div>
                     <label class="btn">
@@ -169,7 +169,7 @@
                 
             </span>
     </div>
-    <div *ngIf="match.player2 == identity.sub">
+    <div *ngIf="match.player2 == identity.id">
         <span *ngFor="let card of cartas1">
                 <div>
                     <label class="btn">

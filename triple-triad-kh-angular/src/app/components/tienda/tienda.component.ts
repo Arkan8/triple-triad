@@ -40,7 +40,7 @@ export class TiendaComponent implements OnInit {
     if (this.identity.puntos < precioPack) {
       alert("¡No te alcanzan los Soles!");
     } else{
-      this._userService.comprarPack(packComprado, this.identity.sub).subscribe(
+      this._userService.comprarPack(packComprado, this.identity.id).subscribe(
         (response) => {
           if (response.status == 'success'){
             let restarPuntos;
@@ -52,7 +52,7 @@ export class TiendaComponent implements OnInit {
               restarPuntos = 100;
             }
 
-            this._userService.removePoints(restarPuntos, this.identity.sub).subscribe(
+            this._userService.removePoints(restarPuntos, this.identity.id).subscribe(
               (response) => {
                 let currentIdentity = JSON.parse(localStorage.getItem('identity'));
                 currentIdentity.puntos = response.user.puntos;

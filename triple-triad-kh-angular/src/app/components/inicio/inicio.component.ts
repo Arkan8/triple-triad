@@ -41,7 +41,7 @@ export class InicioComponent implements OnInit {
   ngOnInit(): void {
 
     //Ver si hay partidas para el usuario
-    this._userService.getPartidas(this.identity.sub).subscribe(
+    this._userService.getPartidas(this.identity.id).subscribe(
       (response) => {
         if (response.status == 'success') {
           this.partidaEnCurso = response.match;
@@ -72,15 +72,15 @@ export class InicioComponent implements OnInit {
 
           for (let i = 0; i < this.retadores.length; i++) {
             for (let j = 0; j < this.retados.length; j++) {
-              if (this.identity.sub == this.retadores[i] || this.identity.sub == this.retados[j]) {
+              if (this.identity.id == this.retadores[i] || this.identity.id == this.retados[j]) {
                 this.isNueva = false;
 
-                if(this.identity.sub == this.retadores[i]){
+                if(this.identity.id == this.retadores[i]){
                   this.isWaiting = true;
                   this.isChallenged = false;
                   this.isNueva = false;
                 } 
-                else if (this.identity.sub = this.retados[j]) {
+                else if (this.identity.id = this.retados[j]) {
                   this.isWaiting = false;
                   this.isChallenged = true;
                   this.isNueva = false;

@@ -76,7 +76,7 @@ export class CardShowComponent implements OnInit {
 
       //Obtener cartas del usuario
       
-      var id = this.identity.sub;
+      var id = this.identity.id;
       
       this._cardService.getUserCards(id).subscribe(
         (response) => {
